@@ -8,7 +8,6 @@ function Dashboard() {
   return (
     <div>
       <Sidebar />
-
       <h1>Welcome Page</h1>
     </div>
   );
