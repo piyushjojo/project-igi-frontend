@@ -11,6 +11,7 @@ export default () => {
       (response) => {
         console.log("success");
         console.log(response);
+        localStorage.clear();
         window.location.href = "/patient/signin";
       },
       (error) => {

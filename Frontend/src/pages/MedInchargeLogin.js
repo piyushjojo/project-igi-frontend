@@ -16,26 +16,26 @@ import {
 
 import "../styles/Contact.css";
 
-function PatientLogin() {
+function MedInchargeLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleClick = () => {
     const login = { email, password };
 
-    axios.post(`http://localhost:8080/patient/signin`, login).then(
+    axios.post(`http://localhost:8080/labincharge/signin`, login).then(
       (response) => {
         console.log(email);
         console.log(password);
         console.log("success");
         console.log(response);
 
-        localStorage.setItem("id", response.data.id);
-        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("mi_id", response.data.id);
+        localStorage.setItem("mi_name", response.data.name);
 
-        console.log(localStorage.getItem("id"));
-        console.log(localStorage.getItem("name"));
-        window.location.href = "/dashboard";
+        console.log(localStorage.getItem("mi_id"));
+        console.log(localStorage.getItem("mi_name"));
+        window.location.href = "/medincharge/dashboard";
       },
       (error) => {
         alert("Invalid Login Details", error);
@@ -51,7 +51,7 @@ function PatientLogin() {
       {/* </Navbar> */}
       <div className="contact">
         <div className="rightSide">
-          <h1> Patient SignIn</h1>
+          <h1> Med Incharge Login</h1>
 
           <Form>
             <FormGroup className="mb-2 me-sm-2 mb-sm-0">
@@ -91,4 +91,4 @@ function PatientLogin() {
   );
 }
 
-export default PatientLogin;
+export default MedInchargeLogin;

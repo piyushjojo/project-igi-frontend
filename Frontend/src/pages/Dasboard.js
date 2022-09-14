@@ -4,11 +4,14 @@ import Home from "./Home";
 
 import Sidebar from "../Components/Sidebar.js";
 
-function Dashboard() {
+function Dashboard(props) {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/patient/signin";
+  }
   return (
     <div>
       <Sidebar />
-      <h1>Welcome Page</h1>
+      <h1>Welcome Page {localStorage.getItem("name")}</h1>
     </div>
   );
 }
