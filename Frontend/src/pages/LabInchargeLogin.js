@@ -30,11 +30,11 @@ function LabInchargeLogin() {
         console.log("success");
         console.log(response);
 
-        localStorage.setItem("li_id", response.data.id);
-        localStorage.setItem("li_name", response.data.name);
+        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("name", response.data.name);
 
-        console.log(localStorage.getItem("li_id"));
-        console.log(localStorage.getItem("li_name"));
+        console.log(localStorage.getItem("id"));
+        console.log(localStorage.getItem("name"));
         window.location.href = "/labincharge/dashboard";
       },
       (error) => {

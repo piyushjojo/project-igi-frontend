@@ -30,11 +30,11 @@ function MedInchargeLogin() {
         console.log("success");
         console.log(response);
 
-        localStorage.setItem("mi_id", response.data.id);
-        localStorage.setItem("mi_name", response.data.name);
+        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("name", response.data.name);
 
-        console.log(localStorage.getItem("mi_id"));
-        console.log(localStorage.getItem("mi_name"));
+        console.log(localStorage.getItem("id"));
+        console.log(localStorage.getItem("name"));
         window.location.href = "/medincharge/dashboard";
       },
       (error) => {

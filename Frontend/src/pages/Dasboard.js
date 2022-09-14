@@ -6,12 +6,14 @@ import Sidebar from "../Components/Sidebar.js";
 
 function Dashboard(props) {
   if (localStorage.getItem("id") == null) {
-    window.location.href = "/patient/signin";
+    window.location.href = "/signin";
   }
   return (
     <div>
       <Sidebar />
-      <h1>Welcome Page {localStorage.getItem("name")}</h1>
+      <h1>
+        Welcome <b>{localStorage.getItem("name")}</b>
+      </h1>
     </div>
   );
 }

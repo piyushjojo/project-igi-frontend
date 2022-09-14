@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dasboard";
 import Signin from "./pages/Signin";
 import MedInchargeLogin from "./pages/MedInchargeLogin";
 import LabInchargeLogin from "./pages/LabInchargeLogin";
+import Profile from "./pages/Profile";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
           />
           <Route exact path="dashboard" element={<Dashboard />} />
           <Route exact path="signin" element={<Signin />} />
+          <Route exact path="profile" element={<Profile />} />
+          <Route exact path="changePassword" element={<ChangePassword />} />
+          {/* <Route exact path="deleteAccount" element={<Profile />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

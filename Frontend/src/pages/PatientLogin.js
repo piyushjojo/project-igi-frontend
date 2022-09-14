@@ -13,6 +13,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import patientService from "../services/patientService";
 
 import "../styles/Contact.css";
 
@@ -23,7 +24,10 @@ function PatientLogin() {
   const handleClick = () => {
     const login = { email, password };
 
-    axios.post(`http://localhost:8080/patient/signin`, login).then(
+    localStorage.clear();
+
+    // axios.post(`http://localhost:8080/patient/signin`, login)
+    patientService.signin(login).then(
       (response) => {
         console.log(email);
         console.log(password);
