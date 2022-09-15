@@ -27,6 +27,14 @@ const changePassword = (data, id) => {
 const remove = (id) => {
   return patientClient.put(`/profile/delete/${id}`);
 };
+
+const OrderMedicine=(data)=>{
+  return patientClient.get(`/ordermed?name=${data}`);
+};
+
+const medicineAddCart=(data)=>{
+  return patientClient.get(`/ordermed?id=${data.id};quantity=${data.quantity}`);
+};
 export default {
   signout,
   signin,
@@ -35,4 +43,6 @@ export default {
   profile,
   changePassword,
   remove,
+  OrderMedicine,
+  medicineAddCart
 };

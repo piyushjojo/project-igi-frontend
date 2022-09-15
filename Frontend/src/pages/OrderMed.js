@@ -14,33 +14,31 @@ import {
   Row,
 } from "reactstrap";
 import patientService from "../services/patientService";
+import MedicineList from "../Components/MedicineList";
 
 import "../styles/Contact.css";
 
-function PatientLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function OrderMed() {
+  const [name, setName] = useState("");
+  const [medicine, setMedicine]=useState([]);
+  
 
   const handleClick = () => {
-    const login = { email, password };
-
+    
+    
     localStorage.clear();
 
     // axios.post(`http://localhost:8080/patient/signin`, login)
-    patientService.signin(login).then(
+    patientService.OrderMedicine(name).then(
       (response) => {
-        console.log(email);
-        console.log(password);
+        
         console.log("success");
         console.log(response);
+        setMedicine(response.data);
+        console.log(medicine)
 
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("id", response.data.id);
-        localStorage.setItem("name", response.data.name);
-
-        console.log(localStorage.getItem("id"));
-        console.log(localStorage.getItem("name"));
-        window.location.href = "/dashboard";
+        
+        // window.location.href = "/dashboard";
       },
       (error) => {
         alert("Invalid Login Details", error);
@@ -56,32 +54,23 @@ function PatientLogin() {
       {/* </Navbar> */}
       <div className="contact">
         <div className="rightSide">
-          <h1> Patient SignIn</h1>
+          <h1>Order Medicine</h1>
 
           <Form>
             <FormGroup className="mb-2 me-sm-2 mb-sm-0">
               <Input
-                id="email"
-                name="email"
-                placeholder="Enter Email"
+                id="name"
+                name="medicineName"
+                placeholder="Enter Medicine Name"
                 type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </FormGroup>
-            <FormGroup className="my-4 me-sm-2 mb-sm-0">
-              <Input
-                id="password"
-                name="password"
-                placeholder="Enter Password"
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </FormGroup>
+            
             <div className="text-center">
               <Button
-                disabled={email && password ? false : true}
+                disabled={name ? false : true}
                 className="btn btn-primary"
                 onClick={handleClick}
               >
@@ -91,9 +80,10 @@ function PatientLogin() {
           </Form>
         </div>
       </div>
+      <MedicineList medList={medicine}/>
       {/* <Footer/> */}
     </div>
   );
 }
 
-export default PatientLogin;
+export default OrderMed;
