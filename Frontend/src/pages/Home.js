@@ -19,7 +19,7 @@ function Home() {
           <Link to="/signin">
             <button className="bg-primary"> SignIn</button>{" "}
           </Link>
-          <Link to="/register">
+          <Link to="/signup">
             <button className="bg-primary"> Register</button>{" "}
           </Link>
         </div>
