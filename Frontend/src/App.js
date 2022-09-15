@@ -9,6 +9,7 @@ import MedInchargeLogin from "./pages/MedInchargeLogin";
 import LabInchargeLogin from "./pages/LabInchargeLogin";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
+import PatientSignUp from "./pages/PatientSignUp";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route exact path="signin" element={<Signin />} />
           <Route exact path="profile" element={<Profile />} />
           <Route exact path="changePassword" element={<ChangePassword />} />
-          {/* <Route exact path="deleteAccount" element={<Profile />} /> */}
+          <Route exact path="signup" element={<PatientSignUp />} />
         </Routes>
       </BrowserRouter>
     </div>

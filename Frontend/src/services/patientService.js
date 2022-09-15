@@ -8,6 +8,14 @@ const signin = (data) => {
   return patientClient.post("/signin", data);
 };
 
+const signup = (data) => {
+  return patientClient.post("/signup2", data);
+};
+
+const checkMail = (data) => {
+  return patientClient.post("/signup1", data);
+};
+
 const profile = (id) => {
   return patientClient.get(`/profile/${id}`);
 };
@@ -19,4 +27,12 @@ const changePassword = (data, id) => {
 const remove = (id) => {
   return patientClient.put(`/profile/delete/${id}`);
 };
-export default { signout, signin, profile, changePassword, remove };
+export default {
+  signout,
+  signin,
+  signup,
+  checkMail,
+  profile,
+  changePassword,
+  remove,
+};

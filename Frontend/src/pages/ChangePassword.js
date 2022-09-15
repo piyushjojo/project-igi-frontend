@@ -13,6 +13,8 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import { waitFor } from "@testing-library/react";
+import { useNavigate } from "react-router-dom";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -23,6 +25,7 @@ function ChangePassword() {
   const [msg3, setMsg3] = useState("");
   const [msg, setMsg] = useState("");
   const [buttonActive, setButtonActive] = useState(false);
+  const navigate = useNavigate();
 
   //   var checkOldNew = () => {
   //     console.log("in  check old new password");
@@ -73,7 +76,13 @@ function ChangePassword() {
 
     patientService
       .changePassword(password, localStorage.getItem("id"))
-      .then(setMsg("password changed successfully"))
+      .then(setMsg("password changed successfully. Login again."))
+      .then(localStorage.clear())
+      .then(
+        setTimeout(() => {
+          navigate("/patient/signin");
+        }, 5000)
+      )
       .catch((error) => {
         console.log("Something went wrong", error);
       });
@@ -120,13 +129,16 @@ function ChangePassword() {
           <span className="message">{msg3}</span>
           <div className="text-center">
             <Button
-              disabled={{ buttonActive } ? true : false}
+              disabled={
+                oldPassword && newPassword && confirmPassword ? false : true
+              }
               className="btn btn-primary"
               onClick={handleClick}
             >
               Submit
             </Button>
           </div>
+          <span className="message">{msg}</span>
         </Form>
       </div>
     </div>
