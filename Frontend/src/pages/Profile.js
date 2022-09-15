@@ -42,15 +42,15 @@ function Profile() {
             </tr>
             <tr>
               <th>Phone</th>
-              <td>{patient.name}</td>
+              <td>{patient.phone}</td>
             </tr>
             <tr>
               <th>Address</th>
-              <td>{patient.name}</td>
+              <td>{patient.address}</td>
             </tr>
             <tr>
               <th>DOB</th>
-              <td>{patient.name}</td>
+              <td>{patient.dob}</td>
             </tr>
             <tr>
               <th>Gender</th>
