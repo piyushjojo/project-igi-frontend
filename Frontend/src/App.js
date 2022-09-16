@@ -11,10 +11,16 @@ import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
 import PatientSignUp from "./pages/PatientSignUp";
 import OrderMed from "./pages/OrderMed";
+import Cart from "./pages/Cart";
+import { useState } from "react";
+
+import AppContext from "./Components/context";
 
 function App() {
+  const [orderlist,setOrderlist]=useState([]);
   return (
-    <div className="App">
+    <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
+      <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -36,9 +42,12 @@ function App() {
           <Route exact path="changePassword" element={<ChangePassword />} />
           <Route exact path="signup" element={<PatientSignUp />} />
           <Route exact path="order" element={<OrderMed />} />
+          <Route exact path="cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>
+    </AppContext.Provider>
+    
   );
 }
 

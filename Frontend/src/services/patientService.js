@@ -32,8 +32,8 @@ const OrderMedicine=(data)=>{
   return patientClient.get(`/ordermed?name=${data}`);
 };
 
-const medicineAddCart=(data)=>{
-  return patientClient.get(`/ordermed?id=${data.id};quantity=${data.quantity}`);
+const medicineAddCart=(id,data)=>{
+  return patientClient.post(`/order/${id}`,data);
 };
 export default {
   signout,

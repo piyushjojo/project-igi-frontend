@@ -17,6 +17,7 @@ import patientService from "../services/patientService";
 import MedicineList from "../Components/MedicineList";
 
 import "../styles/Contact.css";
+import Sidebar from "../Components/Sidebar";
 
 function OrderMed() {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ function OrderMed() {
   const handleClick = () => {
     
     
-    localStorage.clear();
+    
 
     // axios.post(`http://localhost:8080/patient/signin`, login)
     patientService.OrderMedicine(name).then(
@@ -50,11 +51,13 @@ function OrderMed() {
   };
 
   return (
-    <div className="col-8 container-fluid border border-3">
-      {/* </Navbar> */}
+    <div>
+      <Sidebar/>
+      <div className="col-8 container-fluid border border-3">
+      
       <div className="contact">
         <div className="rightSide">
-          <h1>Order Medicine</h1>
+          <h3>Order Medicine</h3>
 
           <Form>
             <FormGroup className="mb-2 me-sm-2 mb-sm-0">
@@ -83,6 +86,8 @@ function OrderMed() {
       <MedicineList medList={medicine}/>
       {/* <Footer/> */}
     </div>
+    </div>
+    
   );
 }
 
