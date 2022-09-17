@@ -1,16 +1,17 @@
 import { useEffect,useContext,useState } from "react";
 import AppContext from "../Components/context";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import patientService from "../services/patientService";
+import MedicinesInTheCart from "../Components/MedicinesInTheCart.js";
 
 
 function Cart(){
 
-var medicinelist=Array(localStorage.getItem("med_orderlist"));
+
 var medqty=localStorage.getItem("med_qty");
 var appctx=useContext(AppContext);
 const [orderlist,setOrderlist]=useState([]);
-
+    var navigate=useNavigate();
     useEffect(()=>{
         setOrderlist(appctx.orderlist);
         console.log(appctx.orderlist);
@@ -29,9 +30,13 @@ const [orderlist,setOrderlist]=useState([]);
             
             console.log("success");
             console.log(response);
-    
+            console.log(response.data)
+            localStorage.setItem("order_summary",JSON.stringify(response.data));
+            console.log(JSON.parse(localStorage.getItem("order_summary")))
+            // appctx.orderlist.
             
-            // window.location.href = "/dashboard";
+            navigate("/yourorders");
+            // window.location.href= "/yourorders";
           },
           (error) => {
            
@@ -47,10 +52,7 @@ const [orderlist,setOrderlist]=useState([]);
             <div>
                 <Link to="/order"> Order </Link>
             </div>
-               {orderlist.map(item=>{
-                    return <div><h2>{item.med.name}</h2>
-                            <h2>{item.quantity}</h2></div>
-               })}
+            <MedicinesInTheCart order_list={orderlist}/>
             <button className="btn btn-primary" onClick={checkOut}>Check Out</button>
         </div>
 	)

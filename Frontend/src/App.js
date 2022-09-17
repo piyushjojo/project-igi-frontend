@@ -15,6 +15,9 @@ import Cart from "./pages/Cart";
 import { useState } from "react";
 
 import AppContext from "./Components/context";
+import YourOrders from "./pages/YourOrders";
+import Payment from "./pages/Payment";
+import PaymentProcessing from "./pages/PaymentProcessing";
 
 function App() {
   const [orderlist,setOrderlist]=useState([]);
@@ -43,6 +46,9 @@ function App() {
           <Route exact path="signup" element={<PatientSignUp />} />
           <Route exact path="order" element={<OrderMed />} />
           <Route exact path="cart" element={<Cart />} />
+          <Route exact path="yourorders" element={<YourOrders />} />
+          <Route exact path="payment" element={<Payment />} />
+          <Route exact path="processing" element={<PaymentProcessing />} />
         </Routes>
       </BrowserRouter>
     </div>

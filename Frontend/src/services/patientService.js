@@ -35,6 +35,13 @@ const OrderMedicine=(data)=>{
 const medicineAddCart=(id,data)=>{
   return patientClient.post(`/order/${id}`,data);
 };
+
+const payment=(data,id)=>{
+  return patientClient.post(`/payment/${id}`,data);
+};
+
+
+
 export default {
   signout,
   signin,
@@ -44,5 +51,6 @@ export default {
   changePassword,
   remove,
   OrderMedicine,
-  medicineAddCart
+  medicineAddCart,
+  payment
 };
