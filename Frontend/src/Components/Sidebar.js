@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "../styles/Sidebar.css";
+import patientService from "../services/patientService";
 
 export default () => {
   const handleClick = () => {
-    axios.post(`http://localhost:8080/patient/signout`).then(
+    patientService.signout().then(
       (response) => {
         console.log("success");
         console.log(response);
+        localStorage.clear();
         window.location.href = "/patient/signin";
       },
       (error) => {
@@ -20,6 +22,7 @@ export default () => {
       }
     );
   };
+
   return (
     <Menu>
       <div className="rightSide">

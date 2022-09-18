@@ -13,34 +13,29 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import patientService from "../services/patientService";
 
 import "../styles/Contact.css";
 
-function PatientLogin() {
+function LabInchargeLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleClick = () => {
     const login = { email, password };
 
-    localStorage.clear();
-
-    // axios.post(`http://localhost:8080/patient/signin`, login)
-    patientService.signin(login).then(
+    axios.post(`http://localhost:8080/labincharge/signin`, login).then(
       (response) => {
         console.log(email);
         console.log(password);
         console.log("success");
         console.log(response);
 
-        localStorage.setItem("token", response.data.token);
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("name", response.data.name);
 
         console.log(localStorage.getItem("id"));
         console.log(localStorage.getItem("name"));
-        window.location.href = "/dashboard";
+        window.location.href = "/labincharge/dashboard";
       },
       (error) => {
         alert("Invalid Login Details", error);
@@ -52,11 +47,11 @@ function PatientLogin() {
   };
 
   return (
-    <div className="col-8 container-fluid border border-3">
+    <div className="col-5 container-fluid border border-3">
       {/* </Navbar> */}
       <div className="contact">
         <div className="rightSide">
-          <h1> Patient SignIn</h1>
+          <h1> Lab Incharge Login</h1>
 
           <Form>
             <FormGroup className="mb-2 me-sm-2 mb-sm-0">
@@ -96,4 +91,4 @@ function PatientLogin() {
   );
 }
 
-export default PatientLogin;
+export default LabInchargeLogin;
