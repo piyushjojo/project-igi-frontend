@@ -7,20 +7,21 @@ import MedicinesInTheCart from "../Components/MedicinesInTheCart.js";
 
 function Cart(){
 
-
-var medqty=localStorage.getItem("med_qty");
 var appctx=useContext(AppContext);
 const [orderlist,setOrderlist]=useState([]);
     var navigate=useNavigate();
+
     useEffect(()=>{
         setOrderlist(appctx.orderlist);
         console.log(appctx.orderlist);
-        console.log(medqty);
+        
     },[])
+
     const checkOut = () => {
     
     
         const data=appctx.orderlist;
+
         var id = parseInt(localStorage.getItem("id"));
         console.log(id+" "+typeof(id));
 
@@ -52,7 +53,7 @@ const [orderlist,setOrderlist]=useState([]);
             <div>
                 <Link to="/order"> Order </Link>
             </div>
-            <MedicinesInTheCart order_list={orderlist}/>
+            <MedicinesInTheCart order_list={orderlist} setOrderlist={setOrderlist}/>
             <button className="btn btn-primary" onClick={checkOut}>Check Out</button>
         </div>
 	)

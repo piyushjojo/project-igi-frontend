@@ -1,7 +1,9 @@
 import MedicineInCartTableRow from "../Components/MedicineInCartTableRow";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 function MedicineInTheCart(props){
     const [sno,setSno]=useState(0);
+   
+
     return(
         <table className="table table-hover table-striped">
         <thead>
@@ -11,12 +13,11 @@ function MedicineInTheCart(props){
                 <th>Manufacturer</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                
             </tr>
         </thead>
         <tbody>
             {props.order_list.map((item,sno)=>
-                 <MedicineInCartTableRow item={item} sno={sno+1} />
+                 <MedicineInCartTableRow item={item} sno={sno+1}  setOrderlist={props.setOrderlist}/>
             )}
         </tbody>
         </table>
