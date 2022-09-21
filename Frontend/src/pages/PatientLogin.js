@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import patientService from "../services/patientService";
 
-import "../styles/Contact.css";
+import "../styles/PatientSignIn.css";
 
 function PatientLogin() {
   const [email, setEmail] = useState("");

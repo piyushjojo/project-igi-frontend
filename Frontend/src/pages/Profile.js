@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import patientService from "../services/patientService";
 import { Link } from "react-router-dom";
+import Navbar2 from "../Components/Navbar copy";
 
 function Profile() {
   if (localStorage.getItem("id") == null) {
@@ -24,8 +25,10 @@ function Profile() {
 
   return (
     <div>
-      <h1>Welcome {patient.name}</h1>
-      <div>
+      <Navbar2/>
+      {/* <h1>Welcome {patient.name}</h1> */}
+      <div className="container-fluid col-6 my-5">
+        <h1>Profile</h1>
         <table className="table table-bordered table-striped">
           <thead className="thead-dark" key={patient}>
             <tr>
@@ -58,13 +61,16 @@ function Profile() {
             </tr>
           </thead>
         </table>
-      </div>
-      <Link to="/changePassword">
-        <button className="bg-primary"> Change Password</button>{" "}
+        <div className="text-center m-3">
+        <Link to="/changePassword">
+        <button className="bg-dark text-white"> Change Password</button>{" "}
       </Link>
       <Link to="/deleteAccount">
-        <button className="bg-primary"> Delete Account</button>{" "}
+        <button className="bg-dark text-white"> Delete Account</button>{" "}
       </Link>
+        </div>
+      </div>
+      
     </div>
   );
 }

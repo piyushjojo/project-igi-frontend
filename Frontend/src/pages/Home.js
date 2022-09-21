@@ -1,20 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import BannerImage from "../assets/homepage.jpg";
-
+import Navbar from "../Components/Navbar";
+import Carousell  from "../Components/Carousell";
 import "../styles/Home.css";
+import Homepage from "./Homepage";
+import Footer from "../Components/Footer"
+
 
 function Home() {
   return (
     <div>
-      {/* <Navbar/> */}
-      <div
-        className="home" /*style={{ backgroundImage: `url(${BannerImage})` }}*/
+       <Navbar/>
+       <Homepage/>
+        <Carousell/>
+      
+      {/* <div
+        className="home" style={{ backgroundImage: `url(${BannerImage})` }}
       >
-        <div className="headerContainer bg-black">
+        <div>
           <h1>Healthcare System</h1>
           <br></br>
-          <p className="bg-danger">Improving Lives Together.</p>
+          <p>Improving Lives Together.</p>
 
           <Link to="/signin">
             <button className="bg-primary"> SignIn</button>{" "}
@@ -23,8 +30,8 @@ function Home() {
             <button className="bg-primary"> Register</button>{" "}
           </Link>
         </div>
-      </div>
-      {/* <Footer/> */}
+      </div> */}
+      <Footer/>
     </div>
   );
 }

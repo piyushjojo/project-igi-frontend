@@ -1,0 +1,47 @@
+input {
+    
+    border-bottom-width: 1px !important;
+    width: 100%;
+    margin: 0.7rem;
+    /* border: none; */
+  border-bottom: 2px solid red;
+  }
+
+  th{
+    text-align: left;
+  }
+
+
+  select{
+    width: 84%;
+    margin-left: 13px !important;
+  }
+
+  
+  td{
+    margin: 0;
+    padding-left: 60px;
+  }
+
+.gender{
+    text-align: left;
+    padding-left : 83px;
+    
+}
+
+table{
+    padding-left: 8rem;
+}
+
+
+  .no-outline:focus {
+    outline: none;
+  }
+
+  .baharvala-div{
+    margin-left: 10rem ;
+  }
+
+  span{
+    margin: 30px;
+  }

@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import PatientLogin from "./pages/PatientLogin";
 import Home from "./pages/Home";
-import Navbar from "./Components/Navbar";
+// import Navbar from "./Components/Navbar";
 import Dashboard from "./pages/Dasboard";
 import Signin from "./pages/Signin";
 import MedInchargeLogin from "./pages/MedInchargeLogin";
@@ -19,16 +19,24 @@ import YourOrders from "./pages/YourOrders";
 import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 
+import Test from "./pages/Test.js"
+
+
 function App() {
   const [orderlist,setOrderlist]=useState([]);
   return (
     <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
       <div className="App">
+     
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
+
+        <Test/>
+
+        
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="patient/signin" element={<PatientLogin />} />
+          {/* <Route exact path="patient/signin" element={<PatientLogin />} /> */}
           <Route
             exact
             path="labincharge/signin"
@@ -51,6 +59,7 @@ function App() {
           <Route exact path="processing" element={<PaymentProcessing />} />
         </Routes>
       </BrowserRouter>
+      
     </div>
     </AppContext.Provider>
     
