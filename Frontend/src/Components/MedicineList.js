@@ -7,18 +7,15 @@ function MedicineList(props){
 	
 	
     return(
-		<div>
-			<div>
-          		<Link to="/cart"> Cart </Link>
-        	</div>
+		<div className="py-3">
 			<table className="table table-hover table-striped table-dark">
 			<thead>
 				<tr>
-                    <th>Id</th>
+                    <th>Sr. No</th>
 					<th>Name</th>
                     <th>Manufacturer</th>
 					<th>Price</th>
-					<th>Quantity</th>
+					{/* <th>Quantity</th> */}
 					<th></th>
 				</tr>
 			</thead>

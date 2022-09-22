@@ -15,30 +15,23 @@ import {
 } from "reactstrap";
 import patientService from "../services/patientService";
 import MedicineList from "../Components/MedicineList";
+import Navbar2 from "../Components/Navbar copy";
 
-import "../styles/Contact.css";
-import Sidebar from "../Components/Sidebar";
+
 
 function OrderMed() {
   const [name, setName] = useState("");
-  const [medicine, setMedicine]=useState([]);
-  
+  const [medicine, setMedicine] = useState([]);
 
   const handleClick = () => {
-    
-    
-    
-
     // axios.post(`http://localhost:8080/patient/signin`, login)
     patientService.OrderMedicine(name).then(
       (response) => {
-        
         console.log("success");
         console.log(response);
         setMedicine(response.data);
-        console.log(medicine)
+        console.log(medicine);
 
-        
         // window.location.href = "/dashboard";
       },
       (error) => {
@@ -52,42 +45,68 @@ function OrderMed() {
 
   return (
     <div>
-      <Sidebar/>
-      <div className="col-8 container-fluid border border-3">
-      
-      <div className="contact">
-        <div className="rightSide">
-          <h3>Order Medicine</h3>
+      <Navbar2/>
+              
+          <div className="text-center">
+            {/* <h3>Order Medicine</h3> */}
 
-          <Form>
-            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-              <Input
-                id="name"
-                name="medicineName"
-                placeholder="Enter Medicine Name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </FormGroup>
-            
-            <div className="text-center">
-              <Button
-                disabled={name ? false : true}
-                className="btn btn-primary"
-                onClick={handleClick}
-              >
-                Submit
-              </Button>
+            <header className=" bg-dark">
+              <div className="container">
+                <div className="w-100 d-flex flex-wrap align-items-center justify-content-center">
+                  <form
+                    className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+                    role="search"
+                  >
+                    <input
+                      type="search"
+                      className="form-control form-control-dark text-bg-dark"
+                      placeholder="Enter Medicine"
+                      aria-label="Search"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </form>
+
+                  <div className="text-end">
+                    <button disabled={name ? false : true} type="button"  onClick={handleClick} className="btn btn-outline-light me-2">
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </header>
+            {/* ==================================================== */}
+
+            {/* <Form>
+              <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+                <Input
+                  id="name"
+                  name="medicineName"
+                  placeholder="Enter Medicine Name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </FormGroup>
+
+              <div className="text-center">
+                <Button
+                  disabled={name ? false : true}
+                  className="btn btn-primary"
+                  onClick={handleClick}
+                >
+                  Submit
+                </Button>
+              </div>
+            </Form> */}
+          </div>
+        
+            <div className="container-fluid col-6">
+            <MedicineList medList={medicine} />
             </div>
-          </Form>
-        </div>
-      </div>
-      <MedicineList medList={medicine}/>
-      {/* <Footer/> */}
+        {/* <Footer/> */}
+
     </div>
-    </div>
-    
   );
 }
 

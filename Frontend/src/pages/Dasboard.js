@@ -1,8 +1,5 @@
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
-import PatientLogin from "./PatientLogin";
-import Home from "./Home";
 
-import Sidebar from "../Components/Sidebar.js";
 import Navbar2 from "../Components/Navbar copy";
 
 function Dashboard(props) {

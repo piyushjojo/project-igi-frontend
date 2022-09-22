@@ -1,8 +1,6 @@
 import "./App.css";
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
-import PatientLogin from "./pages/PatientLogin";
 import Home from "./pages/Home";
-// import Navbar from "./Components/Navbar";
 import Dashboard from "./pages/Dasboard";
 import Signin from "./pages/Signin";
 import MedInchargeLogin from "./pages/MedInchargeLogin";
@@ -20,12 +18,14 @@ import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 
 import Test from "./pages/Test.js"
+import About from "./pages/About";
 
 
 function App() {
   const [orderlist,setOrderlist]=useState([]);
   return (
-    <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
+   <div className="bg-success bg-gradient bg-opacity-50">
+     <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
       <div className="App">
      
       <BrowserRouter>
@@ -36,7 +36,6 @@ function App() {
         
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="patient/signin" element={<PatientLogin />} /> */}
           <Route
             exact
             path="labincharge/signin"
@@ -48,6 +47,8 @@ function App() {
             element={<MedInchargeLogin />}
           />
           <Route exact path="dashboard" element={<Dashboard />} />
+          <Route exact path="about" element={<About />} />
+          <Route exact path="services" element={<About />} />
           <Route exact path="signin" element={<Signin />} />
           <Route exact path="profile" element={<Profile />} />
           <Route exact path="changePassword" element={<ChangePassword />} />
@@ -63,6 +64,7 @@ function App() {
     </div>
     </AppContext.Provider>
     
+   </div>
   );
 }
 

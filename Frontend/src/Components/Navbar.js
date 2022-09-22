@@ -19,16 +19,16 @@ function Navbar() {
         <div className="hiddenLinks">
           <Link to="/"> Home </Link>
           <Link to="/about"> About </Link>
-          <Link to="/menu"> Services </Link>
+          <Link to="/services"> Services </Link>
           <Link to="/contact"> Login </Link>
           <Link to="/register"> Register </Link>
-          <Link to="/custLogin">custLogin</Link>
+          {/* <Link to="/custLogin">custLogin</Link> */}
         </div>
       </div>
       <div className="rightSide" style={{"justifyContent" : "right"}}>
         <Link to="/"> Home </Link>
         <Link to="/about"> About </Link>
-        <Link to="/menu"> Services </Link>
+        <Link to="/services"> Services </Link>
         <Link to="/signin">Sign In</Link>
         <Link to="/signup">Register</Link>
 

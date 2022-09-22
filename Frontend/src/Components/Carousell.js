@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from "react-router-dom";
+import home_img from "../assets/img.png"
 
 function Carousell() {
   return (
@@ -8,7 +9,7 @@ function Carousell() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://picsum.photos/1280/300"
+          src={home_img}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -19,7 +20,7 @@ function Carousell() {
           </Link> */}
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item interval={1000}>
+      {/* <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
           src="https://picsum.photos/1280/300"
@@ -30,23 +31,23 @@ function Carousell() {
           {/* <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           
-        </Carousel.Caption>
+        {/* </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
           src="https://picsum.photos/1280/300"
           alt="Third slide"
-        />
+        /> */}
 
-        <Carousel.Caption>
+        {/* <Carousel.Caption> */}
           {/* <h3>Third slide label</h3>
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p> */}
         
-        </Carousel.Caption>
-      </Carousel.Item>
+        {/* </Carousel.Caption> */}
+      {/* </Carousel.Item> */} 
     </Carousel>
   );
 }

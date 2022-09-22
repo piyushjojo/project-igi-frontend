@@ -129,13 +129,14 @@ function PatientLogin() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="col-4 container-fluid h-50 my-4 border border-3 ">
+      <div className="col-4 center container-fluid h-50 my-4 ">
         {/* </Navbar> */}
-        <div className="contact">
+        <div className="">
           <div className="rightSide">
-            <h1>SignIn</h1>
+            {/* <h1>SignIn</h1> */}
 
-            <Form>
+            <Form className="border border-3 border-dark ">
+            <h1>SignIn</h1>
               <FormGroup className="mb-2 me-sm-2 mb-sm-0">
                 <Input
                   id="email"
@@ -169,8 +170,8 @@ function PatientLogin() {
               <div>
                 <span className="text-danger" id="msg"></span>
               </div>
-              <div className="text-center">
-                <Button
+              <div className="">
+                <Button 
                   disabled={email && password && user ? false : true}
                   className="btn btn-dark"
                   onClick={handleClick}
@@ -178,7 +179,7 @@ function PatientLogin() {
                   Submit
                 </Button>
               </div>
-              <div className="py-4">
+              <div className="py-4 link-secondary">
                 Don't have an account ? <Link to="/signup">Sign Up</Link>
               </div>
             </Form>

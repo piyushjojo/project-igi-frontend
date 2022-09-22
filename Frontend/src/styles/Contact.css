@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.center{
+  text-align: center;
+}
+
 .contact .leftSide {
   height: 100%;
   flex: 50%;
