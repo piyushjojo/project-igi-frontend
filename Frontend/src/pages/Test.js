@@ -1,113 +1,191 @@
-import "../styles/Test.css"
-import $ from 'jquery';
+import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import {
+  Button,
+  Card,
+  CardText,
+  CardTitle,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+} from "reactstrap";
+import custLoginImg from "../assets/img.png";
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
+import "../styles/Contact.css";
+import patientService from "../services/patientService";
 
-$(document).ready(function(){
-    $(".veen .rgstr-btn button").click(function(){
-        $('.veen .wrapper').addClass('move');
-        $('.body').css('background','#e0b722');
-        $(".veen .login-btn button").removeClass('active');
-        $(this).addClass('active');
+// import "../styles/Test.css";
 
-    });
-    $(".veen .login-btn button").click(function(){
-        $('.veen .wrapper').removeClass('move');
-        $('.body').css('background','#ff4931');
-        $(".veen .rgstr-btn button").removeClass('active');
-        $(this).addClass('active');
-    });
-});
+function Test() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("PATIENT");
 
+  function prof(val) {
+    console.log("in - prof");
 
+    if (val == "PATIENT") {
+      setUser("PATIENT");
+    } else if (val == "LAB") {
+      setUser("LAB");
+    } else {
+      setUser("MED");
+    }
+  }
 
+  const handleClick = () => {
+    const login = { email, password };
 
+    localStorage.clear();
 
+    if (user == "PATIENT") {
+      console.log("inside patient service");
+      patientService.signin(login).then(
+        (response) => {
+          console.log(email);
+          console.log(password);
+          console.log("success");
+          console.log(response);
 
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.id);
+          localStorage.setItem("name", response.data.name);
 
-export default function Test(){
-    return(
-        <>
-<div className="body">
-		<div className="veen">
-			<div className="login-btn splits">
-				<p>Already an user?</p>
-				<button className="active">Login</button>
-			</div>
-			<div className="rgstr-btn splits">
-				<p>Don't have an account?</p>
-				<button>Register</button>
-			</div>
-			<div className="wrapper">
-				<form id="login" tabindex="500">
-					<h3>Login</h3>
-					<div className="mail">
-						<input type="mail" name=""/>
-						<label>Mail or Username</label>
-					</div>
-					<div className="passwd">
-						<input type="password" name=""/>
-						<label>Password</label>
-					</div>
-					<div className="submit">
-						<button className="dark">Login</button>
-					</div>
-				</form>
-				<form id="register" tabindex="502">
-					<h3>Register</h3>
-					<div className="name">
-						<input type="text" name=""/>
-						<label>Full Name</label>
-					</div>
-                    <div className="name">
-						<input type="text" name=""/>
-						<label>Full Name</label>
-					</div>
-                    <div className="name">
-						<input type="text" name=""/>
-						<label>Full Name</label>
-					</div>
-                    <div className="name">
-						<input type="text" name=""/>
-						<label>Full Name</label>
-					</div>
-					<div className="mail">
-						<input type="mail" name=""/>
-						<label>Mail</label>
-					</div>
-					<div className="uid">
-						<input type="text" name=""/>
-						<label>User Name</label>
-					</div>
-					<div className="passwd">
-						<input type="password" name=""/>
-						<label>Password</label>
-					</div>
-					<div className="submit">
-						<button className="dark">Register</button>
-					</div>
-				</form>
-			</div>
-		</div>	
-	</div>
+          console.log(localStorage.getItem("id"));
+          console.log(localStorage.getItem("name"));
+          window.location.href = "/dashboard";
+        },
+        (error) => {
+          // alert("Invalid Login Details", error);
+          document.getElementById("error").innerHTML =
+            "&cross; Invalid Credentials";
+          //   toast.error("invalid login");
+          console.log(error);
+          console.log("Error");
+        }
+      );
+      // } else if (user == "MED") {
+      //   medinchargeService.signin(login).then(
+      //     (response) => {
+      //       console.log(email);
+      //       console.log(password);
+      //       console.log("success");
+      //       console.log(response);
 
+      //       localStorage.setItem("token", response.data.token);
+      //       localStorage.setItem("id", response.data.id);
+      //       localStorage.setItem("name", response.data.name);
 
-	{/* <style type="text/css">
-		.site-link{
-      padding: 5px 15px;
-			position: fixed;
-			z-index: 99999;
-			background: #fff;
-			box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
-			right: 30px;
-			bottom: 30px;
-			border-radius: 10px;
-		}
-		.site-link img{
-			width: 30px;
-			height: 30px;
-		}
-	</style> */}
-        </>
-    );
+      //       console.log(localStorage.getItem("id"));
+      //       console.log(localStorage.getItem("name"));
+      //       window.location.href = "/dashboard";
+      //     },
+      //     (error) => {
+      //       // alert("Invalid Login Details", error);
+      //       document.getElementById("msg").innerHTML =
+      //         "&cross; Invalid Credentials";
+      //       toast.error("invalid login");
+      //       console.log(error);
+      //       console.log("Error");
+      //     }
+      //   );
+      // } else {
+      //   labinchargeService.signin(login).then(
+      //     (response) => {
+      //       console.log(email);
+      //       console.log(password);
+      //       console.log("success");
+      //       console.log(response);
 
-    
+      //       localStorage.setItem("token", response.data.token);
+      //       localStorage.setItem("id", response.data.id);
+      //       localStorage.setItem("name", response.data.name);
+
+      //       console.log(localStorage.getItem("id"));
+      //       console.log(localStorage.getItem("name"));
+      //       window.location.href = "/dashboard";
+      //     },
+      //     (error) => {
+      //       // alert("Invalid Login Details", error);
+      //       document.getElementById("msg").innerHTML =
+      //         "&cross; Invalid Credentials";
+      //       toast.error("invalid login");
+      //       console.log(error);
+      //       console.log("Error");
+      //     }
+      //   );
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+
+      <div className="contact border border-5 ">
+        <div
+          className="leftSide rounded-pill border-5"
+          style={{ backgroundImage: `url(${custLoginImg})` }}
+        >
+          {/* //leftside */}
+        </div>
+        <div
+          className="rightSide"
+          style={{
+            "font-size": "larger",
+            "font-weight": "bolder",
+            "font-family": "serif",
+          }}
+        >
+          <h1>Login</h1>
+
+          <Form inline>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="t_email_id">
+                Email
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                placeholder="Enter Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Label className="me-sm-2" for="t_password">
+                Password
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                type="text"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormGroup>
+            <span id="error" className="text-danger"></span>
+            <div className="">
+              <Button
+                disabled={email && password && user ? false : true}
+                className="bg-dark text-white"
+                onClick={handleClick}
+              >
+                Submit
+              </Button>
+            </div>
+          </Form>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 }
+export default Test;
