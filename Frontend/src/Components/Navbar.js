@@ -42,9 +42,9 @@ function Navbar() {
         <Link to="/about"> About </Link>
         <Link to="/services"> Services </Link>
         <Link to="/signin">Sign In</Link>
-        <Link to="/signup">Register</Link>
+        {/* <Link to="/signup">Register</Link> */}
         <span className="text-white" onClick={handleShow}>
-          Hello
+          Register
         </span>
         {/* <SigninModal /> */}
         {/* <button type="button" class="btn btn-outline-dark">Dark</button> */}
