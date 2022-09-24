@@ -26,11 +26,10 @@ function ChangePassword() {
   const [msg2, setMsg2] = useState("");
   const [msg3, setMsg3] = useState("");
   const [msg, setMsg] = useState("");
-  const [checkonp,setCheckonp] = useState(false);
-  const [checkcnp,setCheckcnp] = useState(false);
+  const [checkonp, setCheckonp] = useState(false);
+  const [checkcnp, setCheckcnp] = useState(false);
   const [buttonActive, setButtonActive] = useState(false);
   const navigate = useNavigate();
-  
 
   //   var checkOldNew = () => {
   //     console.log("in  check old new password");
@@ -53,33 +52,38 @@ function ChangePassword() {
 
   useEffect(() => {
     console.log("in new confirm password check ");
-    console.log("Old Password : " + oldPassword  + " New Pass : " + newPassword + " confirm pas : "+ confirmPassword)
- 
-      if(newPassword === confirmPassword){
-        document.getElementById("msg1").innerHTML = ""
-        setCheckcnp(true)
-      }
-      else{
-        // setMsg1("New Password and Confirm Password should be same") 
-        document.getElementById("msg1").innerHTML = "&cross; New Password and Confirm Password should be same"
-        setCheckcnp(false)
-      }
-      if(oldPassword === newPassword){
-        // setMsg("&cross; New Password can not be same as Old password")
-        document.getElementById("msg").innerHTML = "&cross; New Password can not be same as Old password";
-        setCheckonp(false)
-      }
-      else{
-        document.getElementById("msg").innerHTML = ""
-        setCheckonp(true)
-      }
+    console.log(
+      "Old Password : " +
+        oldPassword +
+        " New Pass : " +
+        newPassword +
+        " confirm pas : " +
+        confirmPassword
+    );
 
-      if(newPassword == "" || oldPassword == ""){
-        document.getElementById("msg").innerHTML = ""
-        setCheckonp(false)
-        
-      }
- 
+    if (newPassword === confirmPassword) {
+      document.getElementById("msg1").innerHTML = "";
+      setCheckcnp(true);
+    } else {
+      // setMsg1("New Password and Confirm Password should be same")
+      document.getElementById("msg1").innerHTML =
+        "&cross; New Password and Confirm Password should be same";
+      setCheckcnp(false);
+    }
+    if (oldPassword === newPassword) {
+      // setMsg("&cross; New Password can not be same as Old password")
+      document.getElementById("msg").innerHTML =
+        "&cross; New Password can not be same as Old password";
+      setCheckonp(false);
+    } else {
+      document.getElementById("msg").innerHTML = "";
+      setCheckonp(true);
+    }
+
+    if (newPassword == "" || oldPassword == "") {
+      document.getElementById("msg").innerHTML = "";
+      setCheckonp(false);
+    }
   }, [oldPassword, newPassword, confirmPassword, buttonActive]);
 
   const handleClick = () => {
@@ -100,77 +104,80 @@ function ChangePassword() {
       });
   };
 
-
   var newPassword_confirmPassword_isEqual = () => {
-    console.log("Inside pas check...")
-    if(oldPassword != newPassword){
-      document.getElementById("msg1").innerHTML = "&cross; New Password and Confirm Password should be same";
+    console.log("Inside pas check...");
+    if (oldPassword != newPassword) {
+      document.getElementById("msg1").innerHTML =
+        "&cross; New Password and Confirm Password should be same";
     }
-    if(oldPassword === newPassword){
+    if (oldPassword === newPassword) {
       document.getElementById("msg1").innerHTML = "";
     }
-  }
+  };
 
   return (
     <div>
       <div>
-        <Navbar2/>
-       <div className="container-fluid col-6">
-       <Form>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Input
-              id="oldPassword"
-              name="oldPassword"
-              placeholder="Enter current password"
-              type="text"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Input
-              id="newPassword"
-              name="newPassword"
-              placeholder="Enter new password"
-              type="text"
-              defaultValue={newPassword}
-              onChange={(e) => setNewPassword(e.target.value) } 
+        <Navbar2 />
+        <div className="container-fluid col-6">
+          <Form>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Input
+                id="oldPassword"
+                name="oldPassword"
+                placeholder="Enter current password"
+                type="text"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Input
+                id="newPassword"
+                name="newPassword"
+                placeholder="Enter new password"
+                type="text"
+                defaultValue={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
 
-              // onBlurCapture={(e) => newPassword_confirmPassword_isEqual(e.target.value)}
-              //   onBlur={checkOldNew}
-            />
-          </FormGroup>
-          <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-            <Input
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm new password"
-              type="text"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              // onBlurCapture={(e) => newPassword_confirmPassword_isEqual(e.target.value)}
-              //   onBlur={confirmNew}
-            />
-            <p className="text-danger" id="msg">{msg}</p> 
-            <p className="text-danger" id="msg1">{msg1}</p>
-          </FormGroup>
-          {/* <span className="message">{msg1}</span>
+                // onBlurCapture={(e) => newPassword_confirmPassword_isEqual(e.target.value)}
+                //   onBlur={checkOldNew}
+              />
+            </FormGroup>
+            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
+              <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm new password"
+                type="text"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                // onBlurCapture={(e) => newPassword_confirmPassword_isEqual(e.target.value)}
+                //   onBlur={confirmNew}
+              />
+              <p className="text-danger" id="msg">
+                {msg}
+              </p>
+              <p className="text-danger" id="msg1">
+                {msg1}
+              </p>
+            </FormGroup>
+            {/* <span className="message">{msg1}</span>
           <span className="message">{msg2}</span>
           <span className="message">{msg3}</span> */}
-          <div className="text-center">
-            <Button
-              disabled={!(checkcnp && checkonp)}
-              className="btn btn-dark"
-              onClick={handleClick}
-            >
-              Submit
-            </Button>
-          </div>
-          
-        </Form>
-       </div>
+            <div className="text-center">
+              <Button
+                disabled={!(checkcnp && checkonp)}
+                className="btn btn-dark"
+                onClick={handleClick}
+              >
+                Submit
+              </Button>
+            </div>
+          </Form>
+        </div>
 
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
