@@ -3,6 +3,7 @@ import AppContext from "../Components/context";
 import { Link,useNavigate } from "react-router-dom";
 import patientService from "../services/patientService";
 import MedicinesInTheCart from "../Components/MedicinesInTheCart.js";
+import Navbar2 from "../Components/Navbar copy";
 
 
 function Cart(){
@@ -33,8 +34,8 @@ const [orderlist,setOrderlist]=useState([]);
             console.log(response);
             console.log(response.data)
             localStorage.setItem("order_summary",JSON.stringify(response.data));
-            console.log(JSON.parse(localStorage.getItem("order_summary")))
-            // appctx.orderlist.
+            console.log(JSON.parse(localStorage.getItem("order_summary")));
+            appctx.setOrderlist([]);
             
             navigate("/yourorders");
             // window.location.href= "/yourorders";
@@ -49,13 +50,22 @@ const [orderlist,setOrderlist]=useState([]);
     
 	
     return(
-		<div>
-            <div>
-                <Link to="/order"> Order </Link>
+		<div className="bg-white">
+      <Navbar2></Navbar2>
+      <div className="container-fluid">
+        <div className="row justify-content-center" style={{"margin-top":"5%"}}>
+            <div className="col-6">
+                <MedicinesInTheCart order_list={orderlist} setOrderlist={setOrderlist}/>
             </div>
-            <MedicinesInTheCart order_list={orderlist} setOrderlist={setOrderlist}/>
-            <button className="btn btn-primary" onClick={checkOut}>Check Out</button>
+            <div className="text-center">
+                <button className="btn btn-primary" onClick={checkOut}>Check Out</button>
+            </div>
+           
         </div>
+           
+      </div>
+          
+    </div>
 	)
 }
 export default Cart;

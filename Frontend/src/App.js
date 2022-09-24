@@ -17,21 +17,23 @@ import YourOrders from "./pages/YourOrders";
 import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 
-import Test from "./pages/Test.js"
+
 import About from "./pages/About";
+
+import OrderSummaryPage from "./pages/OrderSummaryPage";
 
 
 function App() {
   const [orderlist,setOrderlist]=useState([]);
   return (
-   <div className="bg-success bg-gradient bg-opacity-50">
+   <div>
      <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
       <div className="App">
      
       <BrowserRouter>
         {/* <Navbar /> */}
 
-        <Test/>
+        
 
         
         <Routes>
@@ -58,6 +60,7 @@ function App() {
           <Route exact path="yourorders" element={<YourOrders />} />
           <Route exact path="payment" element={<Payment />} />
           <Route exact path="processing" element={<PaymentProcessing />} />
+          <Route exact path="ordersummary" element={<OrderSummaryPage/>} />
         </Routes>
       </BrowserRouter>
       

@@ -5,17 +5,17 @@ function MedicineInTheCart(props){
    
 
     return(
-        <table className="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Manufacturer</th>
-                <th>Price</th>
-                <th>Quantity</th>
+        <table className="table table-hover table-striped" >
+        <thead className="text-center">
+            <tr >
+                <th style={{"text-align":"center"}}>SrNo</th>
+                <th style={{"text-align":"center"}}>Name</th>
+                <th style={{"text-align":"center"}}>Manufacturer</th>
+                <th style={{"text-align":"center"}}>Price</th>
+                <th style={{"text-align":"center"}}>Quantity</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style={{"text-align":"center"}}>
             {props.order_list.map((item,sno)=>
                  <MedicineInCartTableRow item={item} sno={sno+1}  setOrderlist={props.setOrderlist}/>
             )}

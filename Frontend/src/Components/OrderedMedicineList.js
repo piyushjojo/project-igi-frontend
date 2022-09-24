@@ -4,8 +4,8 @@ function OrderedMedicineList(){
     var order_summary=JSON.parse(localStorage.getItem("order_summary"));
     const [sno,setSno]=useState(0);
     return(
-        <table className="table table-hover table-striped border">
-			<thead>
+        <table className="table border-borderless">
+			{/* <thead>
 				<tr>
                     <th>Sr No</th>
 					<th>Name</th>
@@ -13,7 +13,7 @@ function OrderedMedicineList(){
 					<th>Price</th>
 					<th>Amount</th>
 				</tr>
-			</thead>
+			</thead> */}
 			<tbody>
             {order_summary.medList.map((item,sno)=>
 					 <OrdersTableRow order_summary={item} sno={sno+1} />

@@ -152,7 +152,7 @@ function PatientLogin() {
                   id="password"
                   name="password"
                   placeholder="Enter Password"
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
