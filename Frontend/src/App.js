@@ -18,56 +18,60 @@ import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 
 
-import About from "./pages/About";
+// import About from "./pages/About";
 
 import OrderSummaryPage from "./pages/OrderSummaryPage";
 
+import Test from "./pages/Test.js";
+import About from "./pages/About";
+import SigninModal from "./pages/SigninModal";
+import DeleteAccount from "./pages/DeleteAccount";
 
 function App() {
-  const [orderlist,setOrderlist]=useState([]);
+  const [orderlist, setOrderlist] = useState([]);
   return (
-   <div>
-     <AppContext.Provider value={{orderlist:orderlist, setOrderlist:setOrderlist}}>
-      <div className="App">
-     
-      <BrowserRouter>
-        {/* <Navbar /> */}
+    <div>
+      <AppContext.Provider
+        value={{ orderlist: orderlist, setOrderlist: setOrderlist }}
+      >
+        <div className="App">
+          <BrowserRouter>
+            {/* <Navbar /> */}
 
-        
+            {/* <Test/> */}
 
-        
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route
-            exact
-            path="labincharge/signin"
-            element={<LabInchargeLogin />}
-          />
-          <Route
-            exact
-            path="medincharge/signin"
-            element={<MedInchargeLogin />}
-          />
-          <Route exact path="dashboard" element={<Dashboard />} />
-          <Route exact path="about" element={<About />} />
-          <Route exact path="services" element={<About />} />
-          <Route exact path="signin" element={<Signin />} />
-          <Route exact path="profile" element={<Profile />} />
-          <Route exact path="changePassword" element={<ChangePassword />} />
-          <Route exact path="signup" element={<PatientSignUp />} />
-          <Route exact path="order" element={<OrderMed />} />
-          <Route exact path="cart" element={<Cart />} />
-          <Route exact path="yourorders" element={<YourOrders />} />
-          <Route exact path="payment" element={<Payment />} />
-          <Route exact path="processing" element={<PaymentProcessing />} />
-          <Route exact path="ordersummary" element={<OrderSummaryPage/>} />
-        </Routes>
-      </BrowserRouter>
-      
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route
+                exact
+                path="labincharge/signin"
+                element={<LabInchargeLogin />}
+              />
+              <Route
+                exact
+                path="medincharge/signin"
+                element={<MedInchargeLogin />}
+              />
+              <Route exact path="dashboard" element={<Dashboard />} />
+              <Route exact path="about" element={<About />} />
+              <Route exact path="services" element={<About />} />
+              {/* <Route exact path="signin" element={<Signin />} /> */}
+              <Route exact path="signin" element={<Test />} />
+              <Route exact path="profile" element={<Profile />} />
+              <Route exact path="changePassword" element={<ChangePassword />} />
+              <Route exact path="signup" element={<PatientSignUp />} />
+              <Route exact path="order" element={<OrderMed />} />
+              <Route exact path="cart" element={<Cart />} />
+              <Route exact path="yourorders" element={<YourOrders />} />
+              <Route exact path="payment" element={<Payment />} />
+              <Route exact path="processing" element={<PaymentProcessing />} />
+              <Route exact path="deleteAccount" element={<DeleteAccount />} />
+              <Route exact path="ordersummary" element={<OrderSummaryPage/>} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </AppContext.Provider>
     </div>
-    </AppContext.Provider>
-    
-   </div>
   );
 }
 

@@ -28,19 +28,21 @@ const remove = (id) => {
   return patientClient.put(`/profile/delete/${id}`);
 };
 
-const OrderMedicine=(data)=>{
+const OrderMedicine = (data) => {
   return patientClient.get(`/ordermed?name=${data}`);
 };
 
-const medicineAddCart=(id,data)=>{
-  return patientClient.post(`/order/${id}`,data);
+const medicineAddCart = (id, data) => {
+  return patientClient.post(`/order/${id}`, data);
 };
 
-const payment=(data,id)=>{
-  return patientClient.post(`/payment/${id}`,data);
+const payment = (data, id) => {
+  return patientClient.post(`/payment/${id}`, data);
 };
 
-
+const recharge = (data, id) => {
+  return patientClient.put(`/walletRechange/${id}`, data);
+};
 
 export default {
   signout,
@@ -52,5 +54,6 @@ export default {
   remove,
   OrderMedicine,
   medicineAddCart,
-  payment
+  payment,
+  recharge,
 };
