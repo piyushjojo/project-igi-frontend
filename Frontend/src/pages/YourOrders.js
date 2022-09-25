@@ -40,7 +40,7 @@ function YourOrders(props){
             </div>   */}
             <div className="container-fluid">
                 <div className="row justify-content-center">
-                    <div className="card shadow-lg" style={{ width: "25rem","marginTop":"4%" }}>
+                    <div className="card shadow-lg mb-6" style={{ width: "25rem","marginTop":"4%" }}>
                         <div className="card-body">
                             <h5 className="card-title">Order Details</h5>
                             <hr></hr>

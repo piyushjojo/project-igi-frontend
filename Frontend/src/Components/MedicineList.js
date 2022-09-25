@@ -8,13 +8,13 @@ function MedicineList(props){
 	
     return(
 		<div className="py-3">
-			<table className="table table-hover table-striped table-dark">
+			<table className="table table-hover table-striped shadow-lg">
 			<thead>
 				<tr>
-                    <th>Sr. No</th>
-					<th>Name</th>
-                    <th>Manufacturer</th>
-					<th>Price</th>
+                    
+					<th className="fw-bolder">Name</th>
+                    <th className="fw-bolder">Manufacturer</th>
+					<th className="fw-bolder">Price</th>
 					{/* <th>Quantity</th> */}
 					<th></th>
 				</tr>

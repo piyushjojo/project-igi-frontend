@@ -85,7 +85,7 @@ function Payment(){
                                         <td style={{ "textAlign": "end" }}>Rs. {order_summary.order.amount}</td>
                                     </tr>
                                 </table>
-                                <button className="btn btn-primary" style={{ "width": "100%" }} onClick={handlClick}>Pay</button>
+                                <button className="btn btn-primary mb-3" style={{ "width": "100%" }} onClick={handlClick}>Pay</button>
                             </div>
 
                         </div>

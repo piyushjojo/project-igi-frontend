@@ -37,7 +37,7 @@ function TableRow(props){
 	return(
 		
 			<tr>	
-				<td>{props.med.id}</td>
+				{/* <td>{props.med.id}</td> */}
 				<td>{props.med.name}</td>
 				<td>{props.med.manufacturer}</td>
 				<td>{props.med.price}</td>

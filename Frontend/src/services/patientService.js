@@ -44,6 +44,9 @@ const recharge = (data, id) => {
   return patientClient.put(`/walletRechange/${id}`, data);
 };
 
+const OrderHistory = (id) => {
+  return patientClient.get(`/orderhistory/${id}`);
+};
 export default {
   signout,
   signin,
@@ -56,4 +59,5 @@ export default {
   medicineAddCart,
   payment,
   recharge,
+  OrderHistory
 };

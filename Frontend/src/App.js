@@ -26,6 +26,7 @@ import Test from "./pages/Test.js";
 import About from "./pages/About";
 import SigninModal from "./pages/SigninModal";
 import DeleteAccount from "./pages/DeleteAccount";
+import OrderHistory from "./pages/OrderHistory";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -67,6 +68,7 @@ function App() {
               <Route exact path="processing" element={<PaymentProcessing />} />
               <Route exact path="deleteAccount" element={<DeleteAccount />} />
               <Route exact path="ordersummary" element={<OrderSummaryPage/>} />
+              <Route exact path="orderhistory" element={<OrderHistory/>} />
             </Routes>
           </BrowserRouter>
         </div>
