@@ -57,20 +57,20 @@ function MedicineInCartTableRow(props){
 						<td><input type="number" min="1" id={props.item.med.id} name="quantity" defaultValue={props.item.quantity}  onInput={setter} className="form-control"/></td>
 						<td className="input-group-append"><button onClick={addQty} className="input-group-text mt-2">+</button></td>
 					</tr> */}
-<div className="input-group mb-3">
-  <div className="input-group-prepend">
-    <button className="btn btn-outline-secondary  btn-dark" type="button" onClick={minusQty}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
-</svg></button>
-  </div>
-  <input type="number" min="1" 
-  className="form-control text-center" aria-describedby="basic-addon1" style={{margin:0}} id={props.item.med.id} name="quantity" defaultValue={props.item.quantity}  onInput={setter}/>
-  <div className="input-group-append">
-    <button className="btn btn-outline-secondary btn-dark fw-bold" type="button" onClick={addQty}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-</svg></button>
-  </div>
-</div>
+				<div className="input-group mb-3">
+					<div className="input-group-prepend">
+						<button className="btn btn-outline-secondary  btn-light border rounded-circle" type="button" onClick={minusQty} style={{padding:"10px",border:0}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-dash-lg" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z" />
+						</svg></button>
+					</div>
+					<input type="number" min="1"
+						className="form-control text-center border-0" aria-describedby="basic-addon1" style={{ margin: 0 }} id={props.item.med.id} name="quantity" defaultValue={props.item.quantity} onInput={setter} />
+					<div className="input-group-append">
+						<button className="btn btn-outline-secondary btn-light fw-bold border rounded-circle" type="button" onClick={addQty} style={{padding:"10px",border:0}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-plus-lg" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+						</svg></button>
+					</div>
+				</div>
 				</td>
 				<td><button className="btn btn-primary" id={props.item.med.id} onClick={deleteFromCart}>Delete</button></td>
 			</tr>		

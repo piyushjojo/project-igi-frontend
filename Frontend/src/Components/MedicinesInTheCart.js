@@ -5,14 +5,14 @@ function MedicineInTheCart(props){
    
 
     return(
-        <table className="table table-hover table-striped" >
+        <table className="table table-hover table-striped shadow-lg" >
         <thead className="text-center">
-            <tr >
-                <th style={{"text-align":"center"}}>SrNo</th>
-                <th style={{"text-align":"center"}}>Name</th>
-                <th style={{"text-align":"center"}}>Manufacturer</th>
-                <th style={{"text-align":"center"}}>Price</th>
-                <th style={{"text-align":"center"}}>Quantity</th>
+            <tr>
+                <th className="fw-bolder" style={{"text-align":"center"}}>SrNo</th>
+                <th className="fw-bolder" style={{"text-align":"center"}}>Name</th>
+                <th className="fw-bolder" style={{"text-align":"center"}}>Manufacturer</th>
+                <th className="fw-bolder" style={{"text-align":"center"}}>Price</th>
+                <th className="fw-bolder" style={{"text-align":"center"}}>Quantity</th>
             </tr>
         </thead>
         <tbody style={{"text-align":"center"}}>

@@ -50,14 +50,14 @@ const [orderlist,setOrderlist]=useState([]);
     
 	
     return(
-		<div className="bg-white">
+		<div className="">
       <Navbar2></Navbar2>
       <div className="container-fluid">
         <div className="row justify-content-center" style={{"margin-top":"5%"}}>
-            <div className="col-6">
+            <div className="col-7">
                 <MedicinesInTheCart order_list={orderlist} setOrderlist={setOrderlist}/>
             </div>
-            <div className="text-center">
+            <div className="text-center" style={{marginTop:"20px"}}>
                 <button className="btn btn-primary" onClick={checkOut}>Check Out</button>
             </div>
            
