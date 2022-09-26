@@ -1,6 +1,6 @@
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
-import img1 from "../assets/card1.jpg";
-import img2 from "../assets/card2.jpg";
+import img1 from "../assets/med4.jpg";
+import img2 from "../assets/wallet.jpg";
 
 import Navbar2 from "../Components/Navbar copy";
 
@@ -17,7 +17,7 @@ function Dashboard(props) {
   return (
     <div className="">
       {/* <Sidebar /> */}
-      <Navbar2 page="dashboard"/>
+      <Navbar2 page="dashboard" />
       <div className="container-fluid my-4 ">
         <div className="row text-white">
           <div
@@ -29,11 +29,9 @@ function Dashboard(props) {
             <div className="card text-bg-dark ">
               <img src={img1} className="card-img" alt="..." />
               <div className="card-img-overlay">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text ">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                <h1 className="card-title text-black">Buy Medicine</h1>
+                <p className="card-text text-black">
+                  Search medicine as per your prescription and order here.
                 </p>
                 <p className="card-text">
                   {/* <small>Last updated 3 mins ago</small> */}
@@ -41,17 +39,20 @@ function Dashboard(props) {
               </div>
             </div>
           </div>
-          <div className="col" onClick={(event) => handleClick(event, "cart")}>
+          <div
+            className="col"
+            onClick={(event) => handleClick(event, "wallet")}
+          >
             <div className="card text-bg-dark">
               <img src={img2} className="card-img" alt="..." />
               <div className="card-img-overlay">
-                <h5 className="card-title">Card title</h5>
+                <h1 className="card-title ">Recharge Wallet</h1>
                 <p className="card-text ">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Recharge your wallet to have smooth transaction while
+                  shopping.
                 </p>
                 <p className="card-text">
+                  Current Wallet Balance {localStorage.getItem("wallet")}
                   {/* <small>Last updated 3 mins ago</small> */}
                 </p>
               </div>

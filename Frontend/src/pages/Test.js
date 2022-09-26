@@ -14,7 +14,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import custLoginImg from "../assets/img.png";
+import custLoginImg from "../assets/login.jpg";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import "../styles/Contact.css";
@@ -56,6 +56,7 @@ function Test() {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("name", response.data.name);
+          localStorage.setItem("wallet", response.data.wallet);
 
           console.log(localStorage.getItem("id"));
           console.log(localStorage.getItem("name"));
@@ -129,7 +130,7 @@ function Test() {
 
       <div className="contact border border-5 ">
         <div
-          className="leftSide rounded-pill border-5"
+          className="leftSide  border-5"
           style={{ backgroundImage: `url(${custLoginImg})` }}
         >
           {/* //leftside */}
@@ -166,7 +167,7 @@ function Test() {
                 id="password"
                 name="password"
                 placeholder="Enter Password"
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

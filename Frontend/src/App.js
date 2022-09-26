@@ -16,7 +16,7 @@ import AppContext from "./Components/context";
 import YourOrders from "./pages/YourOrders";
 import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
-
+import WalletRecharge from "./pages/WalletRecharge";
 
 // import About from "./pages/About";
 
@@ -67,8 +67,9 @@ function App() {
               <Route exact path="payment" element={<Payment />} />
               <Route exact path="processing" element={<PaymentProcessing />} />
               <Route exact path="deleteAccount" element={<DeleteAccount />} />
-              <Route exact path="ordersummary" element={<OrderSummaryPage/>} />
-              <Route exact path="orderhistory" element={<OrderHistory/>} />
+              <Route exact path="ordersummary" element={<OrderSummaryPage />} />
+              <Route exact path="orderhistory" element={<OrderHistory />} />
+              <Route exact path="wallet" element={<WalletRecharge />} />
             </Routes>
           </BrowserRouter>
         </div>
