@@ -148,7 +148,7 @@ function LoginTest({ type = "text", label }) {
 
   return (
     <div className="">
-      <form onSubmit={savePatient}>
+      <form className="a" onSubmit={savePatient}>
         <div className="row">
           <div className="col">
             <div className="input-container">
