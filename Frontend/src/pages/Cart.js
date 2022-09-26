@@ -20,7 +20,7 @@ const [orderlist,setOrderlist]=useState([]);
 
     const checkOut = () => {
     
-    
+        appctx.payment_bool=false;
         const data=appctx.orderlist;
 
         var id = parseInt(localStorage.getItem("id"));

@@ -13,31 +13,12 @@ function YourOrders(props){
     var order_summary=JSON.parse(localStorage.getItem("order_summary"));
     
    
-    useEffect(()=>{
-        if(order_summary.order.payment_status==="PAID"){
-            setColor("green");
-            setOrdermsg("Order Placed Successfully");
-            document.getElementById("paymentLink").hidden=true;
-        }
-    },[])
+    
 
     return(
         <div>
             <Navbar2 />
-            {/* <div className="row justify-content-around mt-4 ">
-            <h3 style={{color}} className="text-center">{ordermsg}</h3>
-            <div className="col-4">
-                <h3>Ordered Medicine List</h3>
-                <OrderedMedicineList/>
-            </div>
-            <div className="col-6">
-                <h3>Order Summary</h3>
-                <OrderSummary/>
-            </div>
-            </div>
-            <div id="paymentLink" className="text-center">
-                <Link to="/payment"><h3>Proceed To Pay</h3></Link>
-            </div>   */}
+            
             <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="card shadow-lg mb-6" style={{ width: "25rem","marginTop":"4%" }}>

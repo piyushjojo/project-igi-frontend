@@ -33,7 +33,7 @@ function App() {
   return (
     <div>
       <AppContext.Provider
-        value={{ orderlist: orderlist, setOrderlist: setOrderlist }}
+        value={{ orderlist: orderlist, setOrderlist: setOrderlist,payment_bool:false,wallet:0 }}
       >
         <div className="App">
           <BrowserRouter>

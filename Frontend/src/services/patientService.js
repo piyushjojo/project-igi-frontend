@@ -41,11 +41,15 @@ const payment = (data, id) => {
 };
 
 const recharge = (data, id) => {
-  return patientClient.put(`/walletRechange/${id}`, data);
+  return patientClient.put(`/walletRecharge/${id}`, data);
 };
 
 const OrderHistory = (id) => {
   return patientClient.get(`/orderhistory/${id}`);
+};
+
+const GetWallet = (id) => {
+  return patientClient.get(`/wallet/${id}`);
 };
 export default {
   signout,
@@ -59,5 +63,6 @@ export default {
   medicineAddCart,
   payment,
   recharge,
-  OrderHistory
+  OrderHistory,
+  GetWallet
 };

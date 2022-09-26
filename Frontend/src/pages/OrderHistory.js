@@ -27,10 +27,10 @@ function OrderHistory(){
     return(
         <div>
             <Navbar2/>
-            <div className="container-fluid col-6" style={{marginTop:"4%"}}>
+            <div className="container-fluid col-8" style={{marginTop:"4%"}}>
                 <OrderHistoryTable orderhistory={orderhistory}/>
             </div>
-            <Link to="/payment"> Payment </Link>
+            
         </div>
     )
 }

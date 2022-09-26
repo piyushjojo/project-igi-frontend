@@ -3,6 +3,7 @@ import img1 from "../assets/med4.jpg";
 import img2 from "../assets/wallet.jpg";
 
 import Navbar2 from "../Components/Navbar copy";
+import Wallet from "../Components/Wallet";
 
 const handleClick = (e, path) => {
   console.log("clicked div");
@@ -52,7 +53,8 @@ function Dashboard(props) {
                   shopping.
                 </p>
                 <p className="card-text">
-                  Current Wallet Balance {localStorage.getItem("wallet")}
+                  Current Wallet Balance <Wallet/>
+                  
                   {/* <small>Last updated 3 mins ago</small> */}
                 </p>
               </div>

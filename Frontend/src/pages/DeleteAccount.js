@@ -44,7 +44,7 @@ export default function DeleteAccount() {
 
   return (
     <div>
-      {/* <Navbar2 /> */}
+      <Navbar2 />
       <div className="container-fluid col-6 text-align-center mt-6">
         <p>Please confirm the deletion of your account.</p>
         <label htmlFor="del">
