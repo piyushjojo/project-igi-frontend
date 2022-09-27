@@ -18,7 +18,7 @@ function Dashboard(props) {
   return (
     <div className="">
       {/* <Sidebar /> */}
-      <Navbar2 page="dashboard" />
+      {/* <Navbar2 page="dashboard" /> */}
       <div className="container-fluid my-4 ">
         <div className="row text-white">
           <div
@@ -53,8 +53,7 @@ function Dashboard(props) {
                   shopping.
                 </p>
                 <p className="card-text">
-                  Current Wallet Balance <Wallet/>
-                  
+                  Current Wallet Balance <Wallet />
                   {/* <small>Last updated 3 mins ago</small> */}
                 </p>
               </div>

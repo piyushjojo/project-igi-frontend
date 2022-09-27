@@ -11,12 +11,14 @@ import PatientSignUp from "./pages/PatientSignUp";
 import OrderMed from "./pages/OrderMed";
 import Cart from "./pages/Cart";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 import AppContext from "./Components/context";
 import YourOrders from "./pages/YourOrders";
 import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 import WalletRecharge from "./pages/WalletRecharge";
+import "react-toastify/dist/ReactToastify.css";
 
 // import About from "./pages/About";
 
@@ -27,17 +29,24 @@ import About from "./pages/About";
 import SigninModal from "./pages/SigninModal";
 import DeleteAccount from "./pages/DeleteAccount";
 import OrderHistory from "./pages/OrderHistory";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
   return (
     <div>
       <AppContext.Provider
-        value={{ orderlist: orderlist, setOrderlist: setOrderlist,payment_bool:false,wallet:0 }}
+        value={{
+          orderlist: orderlist,
+          setOrderlist: setOrderlist,
+          payment_bool: false,
+          wallet: 0,
+        }}
       >
         <div className="App">
           <BrowserRouter>
-            {/* <Navbar /> */}
+            <Navbar />
 
             {/* <Test/> */}
 
@@ -71,6 +80,8 @@ function App() {
               <Route exact path="orderhistory" element={<OrderHistory />} />
               <Route exact path="wallet" element={<WalletRecharge />} />
             </Routes>
+            <ToastContainer position="top-center" autoClose={2000} />
+            <Footer />
           </BrowserRouter>
         </div>
       </AppContext.Provider>

@@ -1,6 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-import home_img from "../assets/home.jpg";
+import home_img from "../assets/New Project.png";
 
 function Carousell() {
   return (

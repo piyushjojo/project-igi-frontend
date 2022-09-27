@@ -2,27 +2,20 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  Button,
-  Card,
-  CardText,
-  CardTitle,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Row,
-} from "reactstrap";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import custLoginImg from "../assets/img.png";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import "../styles/Contact.css";
 import patientService from "../services/patientService";
+import { useDispatch } from "react-redux";
+import { login } from "../slices/authSlice";
 
 // import "../styles/Signin.css";
 
 function Signin() {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("PATIENT");
@@ -40,18 +33,19 @@ function Signin() {
   }
 
   const handleClick = () => {
-    const login = { email, password };
+    const login_payload = { email, password };
 
     localStorage.clear();
 
     if (user == "PATIENT") {
       console.log("inside patient service");
-      patientService.signin(login).then(
+      patientService.signin(login_payload).then(
         (response) => {
           console.log(email);
           console.log(password);
           console.log("success");
           console.log(response);
+          dispatch(login());
 
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("id", response.data.id);
@@ -62,10 +56,10 @@ function Signin() {
           window.location.href = "/dashboard";
         },
         (error) => {
-          // alert("Invalid Login Details", error);
+          toast.error("Invalid Credential...");
           document.getElementById("error").innerHTML =
             "&cross; Invalid Credentials";
-          //   toast.error("invalid login");
+          toast.error("invalid login");
           console.log(error);
           console.log("Error");
         }
@@ -125,7 +119,7 @@ function Signin() {
 
   return (
     <div className="bg-white">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="contact">
         <div

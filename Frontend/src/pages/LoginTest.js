@@ -3,6 +3,7 @@ import TextInput from "../Components/TextInput";
 import { Link, useParams } from "react-router-dom";
 import patientService from "../services/patientService";
 import "../styles/TextInput.css";
+import { toast } from "react-toastify";
 
 function LoginTest({ type = "text", label }) {
   const [email, setEmail] = useState("");
@@ -37,6 +38,7 @@ function LoginTest({ type = "text", label }) {
       .then((response) => {
         console.log("patient added successfully", response.data);
         // window.location.href = "/patient/signin";
+        toast.success("Patient Registered Succesfully.");
         setMsg("Patient Registered Successfully...");
         setTimeout(function () {
           window.location.href = "/signin";
@@ -170,7 +172,7 @@ function LoginTest({ type = "text", label }) {
           <div className="col">
             <div className="input-container">
               <input
-                type="text"
+                type="password"
                 value={password}
                 minlength="8"
                 pattern="[A-Za-z0-9@]+"
@@ -264,7 +266,7 @@ function LoginTest({ type = "text", label }) {
             </label>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-12 center">
           <button
             disabled={!(validEmail && validPassword && validPhone)}
             class="btn btn-dark"

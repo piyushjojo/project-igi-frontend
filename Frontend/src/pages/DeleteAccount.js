@@ -20,34 +20,34 @@ export default function DeleteAccount() {
 
   function deleteAccount() {
     let id = localStorage.getItem("id");
-    if (checkBtn) {
-      patientService
-        .remove(id)
-        .then(console.log("remove ke baad"))
-        .then(setMsg("Account deleted Sucessfully."))
-        .then(console.log("setmsg ke baad"))
-        .then(localStorage.clear())
-        .then(console.log("localstorage ke baad"))
-        .then(
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 5000)
-        )
-        .catch((error) => {
-          console.log("Something went wrong", error);
-        });
-    } else {
-      document.getElementById("confirm_msg").innerHTML =
-        "Please confirm the box";
-    }
+    // if (checkBtn) {
+    patientService
+      .remove(id)
+      .then(console.log("remove ke baad"))
+      .then(setMsg("Account deleted Sucessfully."))
+      .then(console.log("setmsg ke baad"))
+      .then(localStorage.clear())
+      .then(console.log("localstorage ke baad"))
+      .then(
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 5000)
+      )
+      .catch((error) => {
+        console.log("Something went wrong", error);
+      });
+    // } else {
+    //   document.getElementById("confirm_msg").innerHTML =
+    //     "Please confirm the box";
+    // }
   }
 
   return (
     <div>
-      <Navbar2 />
-      <div className="container-fluid col-6 text-align-center mt-6">
-        <p>Please confirm the deletion of your account.</p>
-        <label htmlFor="del">
+      {/* <Navbar2 /> */}
+      <div className="container-fluid col-10 text-align-center mt-6">
+        <p>Do you really wish to delete your account?</p>
+        {/* <label htmlFor="del">
           <input
             type="checkbox"
             value="del"
@@ -56,7 +56,7 @@ export default function DeleteAccount() {
             name="del"
           />
           confirm
-        </label>
+        </label> */}
         <br />
         <span id="confirm_msg"></span>
         <div className="">
@@ -67,7 +67,7 @@ export default function DeleteAccount() {
             className="btn btn-primary"
             onClick={deleteAccount}
           >
-            Delete Account
+            Yes, Delete My Account
           </button>
         </div>
         <span>{msg}</span>

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Card,
@@ -16,16 +17,24 @@ import {
 } from "reactstrap";
 import custLoginImg from "../assets/login.jpg";
 import Footer from "../Components/Footer";
+// import Navbar from "../Components/Navbar copy";
 import Navbar from "../Components/Navbar";
 import "../styles/Contact.css";
 import patientService from "../services/patientService";
-
+// use the dispatch to update the redux store about the signin state
+import { useDispatch } from "react-redux";
+import { login } from "../slices/authSlice";
 // import "../styles/Test.css";
 
 function Test() {
+  const dispatch = useDispatch();
+
+  // get the navigate function reference
+  // const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("PATIENT");
+  const navigate = useNavigate();
 
   function prof(val) {
     console.log("in - prof");
@@ -40,27 +49,24 @@ function Test() {
   }
 
   const handleClick = () => {
-    const login = { email, password };
+    const login_payload = { email, password };
 
     localStorage.clear();
 
     if (user == "PATIENT") {
       console.log("inside patient service");
-      patientService.signin(login).then(
+      patientService.signin(login_payload).then(
         (response) => {
-          console.log(email);
-          console.log(password);
-          console.log("success");
-          console.log(response);
+          dispatch(login());
 
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("name", response.data.name);
           localStorage.setItem("wallet", response.data.wallet);
 
-          console.log(localStorage.getItem("id"));
-          console.log(localStorage.getItem("name"));
-          window.location.href = "/dashboard";
+          // window.location.href = "/dashboard";
+          toast.success("welcome to Site");
+          navigate("/dashboard");
         },
         (error) => {
           // alert("Invalid Login Details", error);
@@ -71,63 +77,11 @@ function Test() {
           console.log("Error");
         }
       );
-      // } else if (user == "MED") {
-      //   medinchargeService.signin(login).then(
-      //     (response) => {
-      //       console.log(email);
-      //       console.log(password);
-      //       console.log("success");
-      //       console.log(response);
-
-      //       localStorage.setItem("token", response.data.token);
-      //       localStorage.setItem("id", response.data.id);
-      //       localStorage.setItem("name", response.data.name);
-
-      //       console.log(localStorage.getItem("id"));
-      //       console.log(localStorage.getItem("name"));
-      //       window.location.href = "/dashboard";
-      //     },
-      //     (error) => {
-      //       // alert("Invalid Login Details", error);
-      //       document.getElementById("msg").innerHTML =
-      //         "&cross; Invalid Credentials";
-      //       toast.error("invalid login");
-      //       console.log(error);
-      //       console.log("Error");
-      //     }
-      //   );
-      // } else {
-      //   labinchargeService.signin(login).then(
-      //     (response) => {
-      //       console.log(email);
-      //       console.log(password);
-      //       console.log("success");
-      //       console.log(response);
-
-      //       localStorage.setItem("token", response.data.token);
-      //       localStorage.setItem("id", response.data.id);
-      //       localStorage.setItem("name", response.data.name);
-
-      //       console.log(localStorage.getItem("id"));
-      //       console.log(localStorage.getItem("name"));
-      //       window.location.href = "/dashboard";
-      //     },
-      //     (error) => {
-      //       // alert("Invalid Login Details", error);
-      //       document.getElementById("msg").innerHTML =
-      //         "&cross; Invalid Credentials";
-      //       toast.error("invalid login");
-      //       console.log(error);
-      //       console.log("Error");
-      //     }
-      //   );
     }
   };
 
   return (
     <div>
-      <Navbar />
-
       <div className="contact border border-5 ">
         <div
           className="leftSide  border-5"
@@ -179,13 +133,12 @@ function Test() {
                 className="bg-dark text-white"
                 onClick={handleClick}
               >
-                Submit
+                SignIn
               </Button>
             </div>
           </Form>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

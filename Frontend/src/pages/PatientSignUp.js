@@ -193,7 +193,10 @@ const PatientSignUp = () => {
   //================= Return ===================
   return (
     <>
-      <LoginTest />
+      <div className="container-fluid col-6">
+        <LoginTest />
+      </div>
+      4{" "}
     </>
   );
 };

@@ -6,16 +6,12 @@ import "../styles/About.css";
 function About() {
   return (
     <div>
-      <Navbar/>
-    <div className="about">
-     
-      <div
-        className="aboutTop"
-        style={{ backgroundImage: `url(${About1})` }}
-      ></div>
-      <div>
-      
-      </div>
+      <div className="about">
+        <div
+          className="aboutTop"
+          style={{ backgroundImage: `url(${About1})` }}
+        ></div>
+        <div></div>
 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -33,8 +29,7 @@ function About() {
           cumque velit
         </p>
       </div>
-      <Footer/>
-      </div>
+    </div>
   );
 }
 

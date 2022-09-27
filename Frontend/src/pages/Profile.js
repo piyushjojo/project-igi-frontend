@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import patientService from "../services/patientService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar2 from "../Components/Navbar copy";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import DeleteAccount from "./DeleteAccount.js";
 
 function Profile() {
+  var navigate = useNavigate();
   if (localStorage.getItem("id") == null) {
     window.location.href = "/signin";
+    // navigate("/signin");
   }
   const [patient, setPatient] = useState("");
   var id = parseInt(localStorage.getItem("id"));
@@ -23,9 +28,13 @@ function Profile() {
       });
   }, []);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
-      <Navbar2/>
       {/* <h1>Welcome {patient.name}</h1> */}
       <div className="container-fluid col-6 my-5">
         <h1>Profile</h1>
@@ -62,15 +71,33 @@ function Profile() {
           </thead>
         </table>
         <div className="text-center m-3">
-        <Link to="/changePassword">
-        <button className="bg-dark text-white"> Change Password</button>{" "}
-      </Link>
-      <Link to="/deleteAccount">
-        <button className="bg-dark text-white"> Delete Account</button>{" "}
-      </Link>
+          <Link to="/changePassword">
+            <Button className="mx-2" variant="dark">
+              Change Password
+            </Button>
+          </Link>
+
+          <Button className="mx-2" variant="danger" onClick={handleShow}>
+            Delete Account
+          </Button>
         </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header>
+            <Modal.Title> Delete Account</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <DeleteAccount />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            {/* <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button> */}
+          </Modal.Footer>
+        </Modal>
       </div>
-      
     </div>
   );
 }

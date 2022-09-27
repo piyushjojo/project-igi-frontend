@@ -17,6 +17,7 @@ import { waitFor } from "@testing-library/react";
 import { useNavigate } from "react-router-dom";
 import Navbar2 from "../Components/Navbar copy";
 import Footer from "../Components/Footer";
+import { toast } from "react-toastify";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -49,6 +50,27 @@ function ChangePassword() {
   //     }
   //     return true;
   //   };
+
+  const validateNewPassword = (e) => {
+    //Password : contain at least 1 Capital Letter, 1 small Letter,1 Special Symbol,1 Number and contain minimum 8 to 15 charecters only
+    if (
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,15}$/.test(
+        e.target.value
+      )
+    ) {
+      // ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$
+      console.log("valid password");
+      setNewPassword(e.target.value);
+    } else {
+      console.log("Invalid Passowrd");
+      document.getElementById("msg").innerHTML =
+        "&cross; 1 Capital 1 small ,1 Special ,\n1 Number Length 8-15 chars";
+      document.getElementById("msg").style.color = "red";
+
+      // document.getElementById("submit-btn").disabled = true;
+      // setValidPassword(false);
+    }
+  };
 
   useEffect(() => {
     console.log("in new confirm password check ");
@@ -92,7 +114,7 @@ function ChangePassword() {
 
     patientService
       .changePassword(password, localStorage.getItem("id"))
-      .then(setMsg("password changed successfully. Login again."))
+      .then(toast.success("Successfully changed password"))
       .then(localStorage.clear())
       .then(
         setTimeout(() => {
@@ -126,7 +148,7 @@ function ChangePassword() {
                 id="oldPassword"
                 name="oldPassword"
                 placeholder="Enter current password"
-                type="text"
+                type="password"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
               />
@@ -136,9 +158,9 @@ function ChangePassword() {
                 id="newPassword"
                 name="newPassword"
                 placeholder="Enter new password"
-                type="text"
+                type="password"
                 defaultValue={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
+                onChange={validateNewPassword}
 
                 // onBlurCapture={(e) => newPassword_confirmPassword_isEqual(e.target.value)}
                 //   onBlur={checkOldNew}
