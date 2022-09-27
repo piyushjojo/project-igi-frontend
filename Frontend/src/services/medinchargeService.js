@@ -19,4 +19,9 @@ const changePassword = (data) => {
 const remove = (id) => {
   return medInchargeClient.put(`/profile/delete/${id}`);
 };
-export default { signout, signin, profile, changePassword, remove };
+
+const addMed = (data) => {
+  return medInchargeClient.post(`/addMedicine`, data);
+};
+
+export default { signout, signin, profile, changePassword, remove, addMed };

@@ -42,9 +42,7 @@ function Test() {
 
     if (val == "PATIENT") {
       setUser("PATIENT");
-    } else if (val == "LAB") {
-      setUser("LAB");
-    } else {
+    } else if (val == "MED") {
       setUser("MED");
     }
   }
@@ -93,7 +91,7 @@ function Test() {
 
           // window.location.href = "/dashboard";
           toast.success("welcome to Site");
-          navigate("/dashboard");
+          navigate("/meddashboard");
         },
         (error) => {
           // alert("Invalid Login Details", error);
@@ -152,6 +150,15 @@ function Test() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+            </FormGroup>
+            <FormGroup>
+              <div className="my-4 me-sm-2 mb-sm-0">
+                <select onChange={(e) => prof(e.target.value)}>
+                  <option>--SELECT--</option>
+                  <option value="PATIENT">Patient</option>
+                  <option value="MED">Incharge</option>
+                </select>
+              </div>
             </FormGroup>
             <span id="error" className="text-danger"></span>
             <div className="">

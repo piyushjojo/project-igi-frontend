@@ -2,6 +2,7 @@ import "./App.css";
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dasboard";
+import MedDashboard from "./pages/MedDasboard";
 import Signin from "./pages/Signin";
 import MedInchargeLogin from "./pages/MedInchargeLogin";
 import LabInchargeLogin from "./pages/LabInchargeLogin";
@@ -31,6 +32,7 @@ import DeleteAccount from "./pages/DeleteAccount";
 import OrderHistory from "./pages/OrderHistory";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import AddMeds from "./pages/AddMeds";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -63,6 +65,7 @@ function App() {
                 element={<MedInchargeLogin />}
               />
               <Route exact path="dashboard" element={<Dashboard />} />
+              <Route exact path="meddashboard" element={<MedDashboard />} />
               <Route exact path="about" element={<About />} />
               <Route exact path="services" element={<About />} />
               {/* <Route exact path="signin" element={<Signin />} /> */}
@@ -79,6 +82,7 @@ function App() {
               <Route exact path="ordersummary" element={<OrderSummaryPage />} />
               <Route exact path="orderhistory" element={<OrderHistory />} />
               <Route exact path="wallet" element={<WalletRecharge />} />
+              <Route exact path="addMeds" element={<AddMeds />} />
             </Routes>
             <ToastContainer position="top-center" autoClose={2000} />
             <Footer />
