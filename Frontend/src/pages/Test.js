@@ -21,6 +21,7 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import "../styles/Contact.css";
 import patientService from "../services/patientService";
+import medinchargeService from "../services/medinchargeService";
 // use the dispatch to update the redux store about the signin state
 import { useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
@@ -33,7 +34,7 @@ function Test() {
   // const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("PATIENT");
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
 
   function prof(val) {
@@ -63,6 +64,32 @@ function Test() {
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("name", response.data.name);
           localStorage.setItem("wallet", response.data.wallet);
+          localStorage.setItem("role", "patient");
+
+          // window.location.href = "/dashboard";
+          toast.success("welcome to Site");
+          navigate("/dashboard");
+        },
+        (error) => {
+          // alert("Invalid Login Details", error);
+          document.getElementById("error").innerHTML =
+            "&cross; Invalid Credentials";
+          //   toast.error("invalid login");
+          console.log(error);
+          console.log("Error");
+        }
+      );
+    } else if (user == "MED") {
+      console.log("inside patient service");
+      medinchargeService.signin(login_payload).then(
+        (response) => {
+          dispatch(login());
+
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.id);
+          localStorage.setItem("name", response.data.name);
+          // localStorage.setItem("wallet", response.data.wallet);
+          localStorage.setItem("role", "med");
 
           // window.location.href = "/dashboard";
           toast.success("welcome to Site");
