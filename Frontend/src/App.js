@@ -33,6 +33,7 @@ import OrderHistory from "./pages/OrderHistory";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import AddMeds from "./pages/AddMeds";
+import IMedicineOrderList from "./pages/IMedicineOrderList";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -83,6 +84,7 @@ function App() {
               <Route exact path="orderhistory" element={<OrderHistory />} />
               <Route exact path="wallet" element={<WalletRecharge />} />
               <Route exact path="addMeds" element={<AddMeds />} />
+              <Route exact path="imedicineorderlist" element={<IMedicineOrderList />} />
             </Routes>
             <ToastContainer position="top-center" autoClose={2000} />
             <Footer />

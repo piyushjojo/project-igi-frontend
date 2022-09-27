@@ -31,7 +31,7 @@ function AddMeds({ type = "text", label }) {
       .addMed(medicine)
       .then((response) => {
         console.log("medicine added successfully", response.data);
-        // window.location.href = "/patient/signin";
+        
         toast.success("Medicine added Succesfully.");
         setMsg("Medicine added Successfully...");
       })

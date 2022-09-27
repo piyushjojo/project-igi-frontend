@@ -19,6 +19,11 @@ function Dashboard(props) {
     <div className="">
       {/* <Sidebar /> */}
       {/* <Navbar2 page="dashboard" /> */}
+      <Link to="/imedicineorderlist">
+          <button className="btn btn-primary">
+            Manage Orders
+          </button>
+        </Link>
       <div className="container-fluid my-4 ">
         <div className="row text-white">
           <div

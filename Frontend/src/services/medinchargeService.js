@@ -24,4 +24,12 @@ const addMed = (data) => {
   return medInchargeClient.post(`/addMedicine`, data);
 };
 
-export default { signout, signin, profile, changePassword, remove, addMed };
+const fetchorders = () => {
+  return medInchargeClient.get(`/fetchorders`);
+};
+
+const updateOrder = (id) => {
+  return medInchargeClient.put(`/updateorder/${id}`);
+};
+
+export default { signout, signin, profile, changePassword, remove, addMed, fetchorders,updateOrder };

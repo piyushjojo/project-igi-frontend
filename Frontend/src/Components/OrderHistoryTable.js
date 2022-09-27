@@ -4,7 +4,7 @@ import OrderHistoryTableRow from "./OrderHistoryTableRow";
 function OrderHistoryTable(props){
 
     const [orderhistory,setOrderhistory]=useState([]);
-    
+    var role=localStorage.getItem("role");
 
     return(
         <div>
@@ -21,7 +21,7 @@ function OrderHistoryTable(props){
         </thead>
         <tbody style={{"text-align":"center"}}>
             {props.orderhistory.sort((a,b)=>{return a.id>b.id?-1:1}).map((item)=>
-                 <OrderHistoryTableRow orderhistory={item}/>
+                 <OrderHistoryTableRow orderhistory={item} role={role}/>
             )}
         </tbody>
         </table>
