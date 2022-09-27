@@ -11,7 +11,7 @@ function MedicineList(props){
 			<table className="table table-hover table-striped shadow-lg">
 			<thead>
 				<tr>
-                    
+                    <th></th>
 					<th className="fw-bolder">Name</th>
                     <th className="fw-bolder">Manufacturer</th>
 					<th className="fw-bolder">Price</th>
@@ -21,7 +21,7 @@ function MedicineList(props){
 			</thead>
 			<tbody>
 				{props.medList.map((item)=>
-					 <TableRow med={item} />
+					 <TableRow med={item} key={item.id} />
 				)}
 			</tbody>
 		</table>
