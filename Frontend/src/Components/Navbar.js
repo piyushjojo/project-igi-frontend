@@ -19,12 +19,11 @@ function Navbar() {
   var appctx = useContext(AppContext);
 
   //
-  const signinStatus = useSelector((state) => state.authSlice.status);
+  const signinStatus = localStorage.getItem("id");
+  // const signinStatus = useSelector((state) => state.authSlice.status);
 
-  // get the dispatcher
   const dispatch = useDispatch();
-
-  // used to navigate
+  const role = localStorage.getItem("role");
   const navigate = useNavigate();
   //----------------------------------------------------------------
 
@@ -83,27 +82,8 @@ function Navbar() {
                 About
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/services"
-              >
-                Services
-              </Link>
-            </li> */}
 
-            {/* <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/search"
-              >
-                Search
-              </Link>
-            </li> */}
-
-            {signinStatus && (
+            {signinStatus && role == "patient" && (
               <li className="nav-item">
                 <Link
                   className="nav-link active"
@@ -115,7 +95,19 @@ function Navbar() {
               </li>
             )}
 
-            {signinStatus && (
+            {signinStatus && role == "med" && (
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/meddashboard"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
+
+            {signinStatus && role == "patient" && (
               <li className="nav-item">
                 <Link
                   className="nav-link active"
@@ -126,7 +118,7 @@ function Navbar() {
                 </Link>
               </li>
             )}
-            {signinStatus && (
+            {signinStatus && role == "patient" && (
               <li className="nav-item">
                 <Link
                   className="nav-link active"
@@ -138,7 +130,7 @@ function Navbar() {
               </li>
             )}
 
-            {signinStatus && (
+            {signinStatus && role == "patient" && (
               <li className="nav-item">
                 <Link to="/cart" id="cart" className="nav-item nav-link">
                   <svg
@@ -221,9 +213,18 @@ function Navbar() {
                     {/* <li><a className="dropdown-item" href="#">ABCD</a></li> */}
                     {/* <li><hr className="dropdown-divider"/></li> */}
 
-                    <Link className="dropdown-item" to="/profile">
-                      Profile
-                    </Link>
+                    {role == "patient" && (
+                      <Link className="dropdown-item" to="/profile">
+                        Profile
+                      </Link>
+                    )}
+
+                    {role == "med" && (
+                      <Link className="dropdown-item" to="/medProfile">
+                        Profile
+                      </Link>
+                    )}
+
                     <Link
                       onClick={handleClick}
                       className="dropdown-item"

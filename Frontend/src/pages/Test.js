@@ -16,9 +16,7 @@ import {
   Row,
 } from "reactstrap";
 import custLoginImg from "../assets/login.jpg";
-import Footer from "../Components/Footer";
 // import Navbar from "../Components/Navbar copy";
-import Navbar from "../Components/Navbar";
 import "../styles/Contact.css";
 import patientService from "../services/patientService";
 import medinchargeService from "../services/medinchargeService";
