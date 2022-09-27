@@ -3,53 +3,72 @@ import { useContext } from "react";
 import AppContext from "./context";
 import medinchargeService from "../services/medinchargeService";
 
-function OrderHistoryTableRow(props){
+function OrderHistoryTableRow(props) {
+  var navigate = useNavigate();
 
-var navigate=useNavigate();
+  var appctx = useContext(AppContext);
 
-var appctx=useContext(AppContext);
+  const handleClick = (e) => {
+    var ohtrDto = { id: e.target.id, amount: props.orderhistory.amount };
+    localStorage.setItem("ohtr", JSON.stringify(ohtrDto));
+    appctx.payment_bool = true;
 
-
-
-const handleClick=(e)=>{
-    var ohtrDto={id:e.target.id,amount:props.orderhistory.amount}
-    localStorage.setItem("ohtr",JSON.stringify(ohtrDto));
-    appctx.payment_bool=true;
-   
-    
     navigate("/payment");
+  };
 
-}
-
-const manageOrders=(e)=>{
+  const manageOrders = (e) => {
     medinchargeService.updateOrder(e.target.id).then(
-        (response) => {
-          console.log(response);
+      (response) => {
+        console.log(response);
         //   setOrderhistory(response.data);
-        window.location.href="/imedicineorderlist";
-        },
-        (error) => {
-          console.log(error);
-          console.log("Error");
-        }
-      );
-   
-    
-    
+        window.location.href = "/medicineorderlist";
+      },
+      (error) => {
+        console.log(error);
+        console.log("Error");
+      }
+    );
+  };
 
-}
-
-    return(
-        <tr>
-        <td>{props.orderhistory.id}</td>
-        {/* <td>{props.orderhistory.patient.name}</td> */}
-        <td>{props.orderhistory.order_date}</td>
-        <td>{props.orderhistory.payment_status}</td>
-        <td>{props.orderhistory.order_status}</td>
-        <td>{props.orderhistory.amount}</td>
-        <td>{props.orderhistory.payment_status=="UNPAID"?<button className="btn btn-primary" id={props.orderhistory.id} onClick={handleClick}>Pay</button>:""}</td>
-        <td>{(props.role=="med")?(props.orderhistory.order_status=="PROCESSING")?<button className="btn btn-primary" id={props.orderhistory.id} onClick={manageOrders}>Dispatch</button>:"DISPATCHED":""}</td>
+  return (
+    <tr>
+      <td>{props.orderhistory.id}</td>
+      {/* <td>{props.orderhistory.patient.name}</td> */}
+      <td>{props.orderhistory.order_date}</td>
+      <td>{props.orderhistory.payment_status}</td>
+      <td>{props.orderhistory.order_status}</td>
+      <td>{props.orderhistory.amount}</td>
+      <td>
+        {props.orderhistory.payment_status == "UNPAID" ? (
+          <button
+            className="btn btn-primary"
+            id={props.orderhistory.id}
+            onClick={handleClick}
+          >
+            Pay
+          </button>
+        ) : (
+          ""
+        )}
+      </td>
+      <td>
+        {props.role == "med" ? (
+          props.orderhistory.order_status == "PROCESSING" ? (
+            <button
+              className="btn btn-primary"
+              id={props.orderhistory.id}
+              onClick={manageOrders}
+            >
+              Dispatch
+            </button>
+          ) : (
+            "DISPATCHED"
+          )
+        ) : (
+          ""
+        )}
+      </td>
     </tr>
-    )
+  );
 }
 export default OrderHistoryTableRow;

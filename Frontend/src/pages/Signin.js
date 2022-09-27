@@ -1,33 +1,45 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import custLoginImg from "../assets/img.png";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Card,
+  CardText,
+  CardTitle,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+} from "reactstrap";
+import LoginImg from "../assets/login1.jpg";
+// import Navbar from "../Components/Navbar copy";
 import "../styles/Contact.css";
 import patientService from "../services/patientService";
+import medinchargeService from "../services/medinchargeService";
+// use the dispatch to update the redux store about the signin state
 import { useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
-
-// import "../styles/Signin.css";
+// import "../styles/Test.css";
 
 function Signin() {
   const dispatch = useDispatch();
 
+  // get the navigate function reference
+  // const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("PATIENT");
+  const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
   function prof(val) {
     console.log("in - prof");
 
     if (val == "PATIENT") {
       setUser("PATIENT");
-    } else if (val == "LAB") {
-      setUser("LAB");
-    } else {
+    } else if (val == "MED") {
       setUser("MED");
     }
   }
@@ -41,137 +53,134 @@ function Signin() {
       console.log("inside patient service");
       patientService.signin(login_payload).then(
         (response) => {
-          console.log(email);
-          console.log(password);
-          console.log("success");
-          console.log(response);
           dispatch(login());
 
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("name", response.data.name);
+          localStorage.setItem("wallet", response.data.wallet);
+          localStorage.setItem("role", "patient");
 
-          console.log(localStorage.getItem("id"));
-          console.log(localStorage.getItem("name"));
-          window.location.href = "/dashboard";
+          // window.location.href = "/dashboard";
+          toast.success("welcome to Site");
+          navigate("/dashboard");
         },
         (error) => {
-          toast.error("Invalid Credential...");
+          // alert("Invalid Login Details", error);
           document.getElementById("error").innerHTML =
             "&cross; Invalid Credentials";
-          toast.error("invalid login");
+          toast.error("Invalid Credentials");
           console.log(error);
           console.log("Error");
         }
       );
-      // } else if (user == "MED") {
-      //   medinchargeService.signin(login).then(
-      //     (response) => {
-      //       console.log(email);
-      //       console.log(password);
-      //       console.log("success");
-      //       console.log(response);
+    } else if (user == "MED") {
+      console.log("inside patient service");
+      medinchargeService.signin(login_payload).then(
+        (response) => {
+          dispatch(login());
 
-      //       localStorage.setItem("token", response.data.token);
-      //       localStorage.setItem("id", response.data.id);
-      //       localStorage.setItem("name", response.data.name);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("id", response.data.id);
+          localStorage.setItem("name", response.data.name);
+          // localStorage.setItem("wallet", response.data.wallet);
+          localStorage.setItem("role", "med");
 
-      //       console.log(localStorage.getItem("id"));
-      //       console.log(localStorage.getItem("name"));
-      //       window.location.href = "/dashboard";
-      //     },
-      //     (error) => {
-      //       // alert("Invalid Login Details", error);
-      //       document.getElementById("msg").innerHTML =
-      //         "&cross; Invalid Credentials";
-      //       toast.error("invalid login");
-      //       console.log(error);
-      //       console.log("Error");
-      //     }
-      //   );
-      // } else {
-      //   labinchargeService.signin(login).then(
-      //     (response) => {
-      //       console.log(email);
-      //       console.log(password);
-      //       console.log("success");
-      //       console.log(response);
-
-      //       localStorage.setItem("token", response.data.token);
-      //       localStorage.setItem("id", response.data.id);
-      //       localStorage.setItem("name", response.data.name);
-
-      //       console.log(localStorage.getItem("id"));
-      //       console.log(localStorage.getItem("name"));
-      //       window.location.href = "/dashboard";
-      //     },
-      //     (error) => {
-      //       // alert("Invalid Login Details", error);
-      //       document.getElementById("msg").innerHTML =
-      //         "&cross; Invalid Credentials";
-      //       toast.error("invalid login");
-      //       console.log(error);
-      //       console.log("Error");
-      //     }
-      //   );
+          // window.location.href = "/dashboard";
+          toast.success("welcome to Site");
+          navigate("/meddashboard");
+        },
+        (error) => {
+          // alert("Invalid Login Details", error);
+          document.getElementById("error").innerHTML =
+            "&cross; Invalid Credentials";
+          toast.error("Invalid Credentials");
+          console.log(error);
+          console.log("Error");
+        }
+      );
     }
   };
 
   return (
-    <div className="bg-white">
-      {/* <Navbar /> */}
-
-      <div className="contact">
+    <div>
+      <div className="contact border border-5 ">
         <div
-          className="leftSide"
-          style={{ backgroundImage: `url(${custLoginImg})` }}
+          className="leftSide  border-5"
+          style={{ backgroundImage: `url(${LoginImg})` }}
         >
           {/* //leftside */}
         </div>
-        <div className="rightSide">
-          <h3>Login</h3>
+        <div
+          className="rightSide text-center"
+          style={{
+            "font-size": "larger",
+            "font-weight": "bolder",
+            "font-family": "serif",
+          }}
+        >
+          <Form
+            inline
+            className="col-7 container border border-success shadow-lg"
+          >
+            <h2>Login</h2>
 
-          <Form inline>
-            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-              <Label className="me-sm-2" for="t_email_id">
-                Email
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                placeholder="Enter Email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            <FormGroup>
+              <div className="input-container">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <label className={email && "filled"} htmlFor="email">
+                  Email
+                </label>
+              </div>
             </FormGroup>
-            <FormGroup className="mb-2 me-sm-2 mb-sm-0">
-              <Label className="me-sm-2" for="t_password">
-                Password
-              </Label>
-              <Input
-                id="password"
-                name="password"
-                placeholder="Enter Password"
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+            <FormGroup>
+              <div className="input-container">
+                <input
+                  id="password"
+                  name="password"
+                  // placeholder="Enter Password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <label className={password && "filled"} htmlFor="password">
+                  Password
+                </label>
+              </div>
+            </FormGroup>
+            <FormGroup>
+              <div>
+                <div className="input-container">
+                  <select onChange={(e) => prof(e.target.value)}>
+                    <option value=""></option>
+                    <option value="PATIENT">Patient</option>
+                    <option value="MED">Incharge</option>
+                  </select>
+                  <label className={user && "filled"} htmlFor="role">
+                    Who are you ?
+                  </label>
+                </div>
+              </div>
             </FormGroup>
             <span id="error" className="text-danger"></span>
             <div className="">
               <Button
                 disabled={email && password && user ? false : true}
-                className="bg-black"
+                className="bg-dark text-white text-center"
                 onClick={handleClick}
               >
-                Submit
+                SignIn
               </Button>
             </div>
           </Form>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

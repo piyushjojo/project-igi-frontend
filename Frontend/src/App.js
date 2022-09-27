@@ -3,7 +3,6 @@ import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dasboard";
 import MedDashboard from "./pages/MedDasboard";
-import Signin from "./pages/Signin";
 import MedInchargeLogin from "./pages/MedInchargeLogin";
 import LabInchargeLogin from "./pages/LabInchargeLogin";
 import Profile from "./pages/Profile";
@@ -25,7 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import OrderSummaryPage from "./pages/OrderSummaryPage";
 
-import Test from "./pages/Test.js";
+import Signin from "./pages/Signin";
 import About from "./pages/About";
 import SigninModal from "./pages/SigninModal";
 import DeleteAccount from "./pages/DeleteAccount";
@@ -70,7 +69,7 @@ function App() {
               <Route exact path="about" element={<About />} />
               <Route exact path="services" element={<About />} />
               {/* <Route exact path="signin" element={<Signin />} /> */}
-              <Route exact path="signin" element={<Test />} />
+              <Route exact path="signin" element={<Signin />} />
               <Route exact path="profile" element={<Profile />} />
               <Route exact path="changePassword" element={<ChangePassword />} />
               <Route exact path="signup" element={<PatientSignUp />} />
@@ -84,7 +83,12 @@ function App() {
               <Route exact path="orderhistory" element={<OrderHistory />} />
               <Route exact path="wallet" element={<WalletRecharge />} />
               <Route exact path="addMeds" element={<AddMeds />} />
-              <Route exact path="imedicineorderlist" element={<IMedicineOrderList />} />
+
+              <Route
+                exact
+                path="medicineorderlist"
+                element={<IMedicineOrderList />}
+              />
             </Routes>
             <ToastContainer position="top-center" autoClose={2000} />
             <Footer />

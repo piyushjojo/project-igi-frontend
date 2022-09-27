@@ -60,7 +60,6 @@ function YourOrders(props) {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 }

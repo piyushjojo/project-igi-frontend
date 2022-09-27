@@ -5,43 +5,27 @@ import Navbar2 from "../Components/Navbar copy";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import DeleteAccount from "./DeleteAccount.js";
-import medinchargeService from "../services/medinchargeService";
 
 function Profile() {
-  var role = localStorage.getItem("role");
-
+  var navigate = useNavigate();
   if (localStorage.getItem("id") == null) {
     window.location.href = "/signin";
     // navigate("/signin");
   }
-  const [user, setUser] = useState("");
+  const [patient, setPatient] = useState("");
   var id = parseInt(localStorage.getItem("id"));
   useEffect(() => {
-    if (role == "patient") {
-      patientService
-        .profile(id)
-        .then((response) => {
-          setUser(response.data);
-          console.log(response);
-          console.log(user);
-          return response.data;
-        })
-        .catch((error) => {
-          console.log("Something went wrong", error);
-        });
-    } else {
-      medinchargeService
-        .profile(id)
-        .then((response) => {
-          setUser(response.data);
-          console.log(response);
-          console.log(user);
-          return response.data;
-        })
-        .catch((error) => {
-          console.log("Something went wrong", error);
-        });
-    }
+    patientService
+      .profile(id)
+      .then((response) => {
+        setPatient(response.data);
+        console.log(response);
+        console.log(patient);
+        return response.data;
+      })
+      .catch((error) => {
+        console.log("Something went wrong", error);
+      });
   }, []);
 
   const [show, setShow] = useState(false);
@@ -51,38 +35,38 @@ function Profile() {
 
   return (
     <div>
-      {/* <h1>Welcome {user.name}</h1> */}
+      {/* <h1>Welcome {patient.name}</h1> */}
       <div className="container-fluid col-6 my-5">
         <h1>Profile</h1>
         <table className="table table-bordered table-striped">
-          <thead className="thead-dark" key={user}>
+          <thead className="thead-dark" key={patient}>
             <tr>
               <th>Id</th>
               <td>{localStorage.getItem("id")}</td>
             </tr>
             <tr>
               <th>Name</th>
-              <td>{user.name}</td>
+              <td>{patient.name}</td>
             </tr>
             <tr>
               <th>Email</th>
-              <td>{user.email}</td>
+              <td>{patient.email}</td>
             </tr>
             <tr>
               <th>Phone</th>
-              <td>{user.phone}</td>
+              <td>{patient.phone}</td>
             </tr>
             <tr>
               <th>Address</th>
-              <td>{user.address}</td>
+              <td>{patient.address}</td>
             </tr>
             <tr>
               <th>DOB</th>
-              <td>{user.dob}</td>
+              <td>{patient.dob}</td>
             </tr>
             <tr>
               <th>Gender</th>
-              <td>{user.gender}</td>
+              <td>{patient.gender}</td>
             </tr>
           </thead>
         </table>

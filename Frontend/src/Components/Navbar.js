@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import AppContext from "../Components/context";
 import "../styles/Navbar.css";
-import Test from "../pages/Test";
+import Signin from "../pages/Signin";
 import PatientSignUp from "../pages/PatientSignUp";
 
 // for getting the current state of signin status
@@ -107,6 +107,30 @@ function Navbar() {
               </li>
             )}
 
+            {signinStatus && role == "med" && (
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/medicineorderlist"
+                >
+                  Manage Orders
+                </Link>
+              </li>
+            )}
+
+            {signinStatus && role == "med" && (
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/addMeds"
+                >
+                  Add Medicine
+                </Link>
+              </li>
+            )}
+
             {signinStatus && role == "patient" && (
               <li className="nav-item">
                 <Link
@@ -183,7 +207,10 @@ function Navbar() {
 
               {/* if user is signed in then render signout button */}
               {signinStatus && (
-                <li className="nav-item dropdown  navbar-nav navbar-right">
+                <li
+                  className="nav-item dropdown  navbar-nav navbar-right"
+                  style={{ "margin-right": "2.5rem" }}
+                >
                   <a
                     className="nav-link dropdown-toggle"
                     href="#"
@@ -220,7 +247,7 @@ function Navbar() {
                     )}
 
                     {role == "med" && (
-                      <Link className="dropdown-item" to="/medProfile">
+                      <Link className="dropdown-item" to="/profile">
                         Profile
                       </Link>
                     )}

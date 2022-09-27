@@ -1,6 +1,6 @@
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
-import img1 from "../assets/med4.jpg";
-import img2 from "../assets/wallet.jpg";
+import img1 from "../assets/addMedicine2.jpg";
+import img2 from "../assets/manageOrders.jpg";
 
 import Navbar2 from "../Components/Navbar copy";
 import Wallet from "../Components/Wallet";
@@ -17,26 +17,17 @@ function Dashboard(props) {
 
   return (
     <div className="">
-      {/* <Sidebar /> */}
-      {/* <Navbar2 page="dashboard" /> */}
-      <Link to="/imedicineorderlist">
-          <button className="btn btn-primary">
-            Manage Orders
-          </button>
-        </Link>
       <div className="container-fluid my-4 ">
         <div className="row text-white">
           <div
             className="col"
-            // onClick={handleClick}
             onClick={(event) => handleClick(event, "addMeds")}
-            // style={{ cursor: "pointer" }}
           >
-            <div className="card text-bg-dark ">
+            <div className="card ">
               <img src={img1} className="card-img" alt="..." />
-              <div className="card-img-overlay">
-                <h1 className="card-title text-black">Add Medicine</h1>
-                <p className="card-text text-black">Add Medicine here.</p>
+              <div className="card-img-overlay bg-dark opacity-75">
+                <h1 className="card-title ">Add Medicine</h1>
+                <p className="card-text ">Click to add or update Medicine.</p>
                 <p className="card-text">
                   {/* <small>Last updated 3 mins ago</small> */}
                 </p>
@@ -49,14 +40,12 @@ function Dashboard(props) {
           >
             <div className="card text-bg-dark">
               <img src={img2} className="card-img" alt="..." />
-              <div className="card-img-overlay">
-                <h1 className="card-title ">Recharge Wallet</h1>
+              <div className="card-img-overlay  bg-dark opacity-75">
+                <h1 className="card-title ">Manage Orders</h1>
                 <p className="card-text ">
-                  Recharge your wallet to have smooth transaction while
-                  shopping.
+                  Manage orders to keep your customers satisfied...
                 </p>
                 <p className="card-text">
-                  Current Wallet Balance <Wallet />
                   {/* <small>Last updated 3 mins ago</small> */}
                 </p>
               </div>
