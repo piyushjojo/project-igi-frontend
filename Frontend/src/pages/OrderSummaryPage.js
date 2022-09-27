@@ -23,7 +23,7 @@ function OrderSummaryPage(props){
 
     return(
         <div>
-            <Navbar2 />
+            {/* <Navbar2 /> */}
             
             <div className="container-fluid">
                 <div className="row justify-content-center">

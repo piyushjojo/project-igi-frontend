@@ -13,6 +13,7 @@ function MedicineInTheCart(props){
                 <th className="fw-bolder" style={{"text-align":"center"}}>Manufacturer</th>
                 <th className="fw-bolder" style={{"text-align":"center"}}>Price</th>
                 <th className="fw-bolder" style={{"text-align":"center"}}>Quantity</th>
+                <th className="fw-bolder" style={{"text-align":"center"}}>Total</th>
             </tr>
         </thead>
         <tbody style={{"text-align":"center"}}>

@@ -30,7 +30,7 @@ export default function WalletRecharge() {
 
   return (
     <div>
-      <Navbar2 />
+      {/* <Navbar2 /> */}
       <div className="container" style={{ textAlign: "center", margin: 20 }}>
         <div className="row">
           <div className="col-3"></div>

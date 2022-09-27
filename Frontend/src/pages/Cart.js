@@ -55,14 +55,14 @@ function Cart() {
           )}
 
           {orderlist.length != 0 && (
-            <div className="col-7">
+            <div className="col-8">
               <MedicinesInTheCart
                 order_list={orderlist}
                 setOrderlist={setOrderlist}
               />
-              <div className="text-center" style={{ marginTop: "20px" }}>
+              <div className="text-center" style={{ margin: "50px" }}>
                 <button
-                  disabled={orderlist.length == 0}
+                  
                   className="btn btn-primary"
                   onClick={checkOut}
                 >
