@@ -36,7 +36,7 @@ function Dashboard(props) {
           </div>
           <div
             className="col"
-            onClick={(event) => handleClick(event, "wallet")}
+            onClick={(event) => handleClick(event, "medicineorderlist")}
           >
             <div className="card text-bg-dark">
               <img src={img2} className="card-img" alt="..." />

@@ -22,6 +22,7 @@ import medinchargeService from "../services/medinchargeService";
 // use the dispatch to update the redux store about the signin state
 import { useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
+import signInService from "../services/signInService";
 // import "../styles/Test.css";
 
 function Signin() {
@@ -45,61 +46,36 @@ function Signin() {
   }
 
   const handleClick = () => {
-    const login_payload = { email, password };
+    const login_payload = { email, password, user };
+    console.log(login_payload);
 
     localStorage.clear();
 
-    if (user == "PATIENT") {
-      console.log("inside patient service");
-      patientService.signin(login_payload).then(
-        (response) => {
-          dispatch(login());
+    signInService.signin(login_payload).then(
+      (response) => {
+        dispatch(login());
 
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("id", response.data.id);
-          localStorage.setItem("name", response.data.name);
-          localStorage.setItem("wallet", response.data.wallet);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("name", response.data.name);
+        if (user == "PATIENT") {
           localStorage.setItem("role", "patient");
-
-          // window.location.href = "/dashboard";
-          toast.success("welcome to Site");
           navigate("/dashboard");
-        },
-        (error) => {
-          // alert("Invalid Login Details", error);
-          document.getElementById("error").innerHTML =
-            "&cross; Invalid Credentials";
-          toast.error("Invalid Credentials");
-          console.log(error);
-          console.log("Error");
-        }
-      );
-    } else if (user == "MED") {
-      console.log("inside patient service");
-      medinchargeService.signin(login_payload).then(
-        (response) => {
-          dispatch(login());
-
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("id", response.data.id);
-          localStorage.setItem("name", response.data.name);
-          // localStorage.setItem("wallet", response.data.wallet);
+        } else {
           localStorage.setItem("role", "med");
-
-          // window.location.href = "/dashboard";
-          toast.success("welcome to Site");
           navigate("/meddashboard");
-        },
-        (error) => {
-          // alert("Invalid Login Details", error);
-          document.getElementById("error").innerHTML =
-            "&cross; Invalid Credentials";
-          toast.error("Invalid Credentials");
-          console.log(error);
-          console.log("Error");
         }
-      );
-    }
+
+        toast.success("welcome to Site");
+      },
+      (error) => {
+        document.getElementById("error").innerHTML =
+          "&cross; Invalid Credentials";
+        toast.error("Invalid Credentials");
+        console.log(error);
+        console.log("Error");
+      }
+    );
   };
 
   return (
@@ -108,9 +84,7 @@ function Signin() {
         <div
           className="leftSide  border-5"
           style={{ backgroundImage: `url(${LoginImg})` }}
-        >
-          {/* //leftside */}
-        </div>
+        ></div>
         <div
           className="rightSide text-center"
           style={{
@@ -144,7 +118,6 @@ function Signin() {
                 <input
                   id="password"
                   name="password"
-                  // placeholder="Enter Password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -159,11 +132,11 @@ function Signin() {
                 <div className="input-container">
                   <select onChange={(e) => prof(e.target.value)}>
                     <option value=""></option>
-                    <option value="PATIENT">Patient</option>
-                    <option value="MED">Incharge</option>
+                    <option value="PATIENT">Customer</option>
+                    <option value="MED">Manager</option>
                   </select>
                   <label className={user && "filled"} htmlFor="role">
-                    Who are you ?
+                    Login as
                   </label>
                 </div>
               </div>
