@@ -5,7 +5,6 @@ import medinchargeService from "../services/medinchargeService";
 
 function OrderHistoryTableRow(props) {
   var navigate = useNavigate();
-
   var appctx = useContext(AppContext);
 
   const handleClick = (e) => {
@@ -21,7 +20,8 @@ function OrderHistoryTableRow(props) {
       (response) => {
         console.log(response);
         //   setOrderhistory(response.data);
-        window.location.href = "/medicineorderlist";
+        // window.location.href = "/medicineorderlist";
+        navigate("/medicineorderlist");
       },
       (error) => {
         console.log(error);

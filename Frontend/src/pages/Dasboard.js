@@ -2,15 +2,17 @@ import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import img1 from "../assets/buyMed1.jpg";
 import img2 from "../assets/addwallet.jpg";
 import Wallet from "../Components/Wallet";
-
+import { useNavigate } from "react-router-dom";
 const handleClick = (e, path) => {
   console.log("clicked div");
   window.location.href = "/" + path;
 };
 
 function Dashboard(props) {
+  const navigate = useNavigate();
   if (localStorage.getItem("id") == null) {
-    window.location.href = "/signin";
+    // window.location.href = "/signin";
+    navigate("/signin");
   }
 
   return (

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import patientService from "../services/patientService";
-import Navbar2 from "../Components/Navbar copy";
+import { useNavigate } from "react-router-dom";
 
 export default function DeleteAccount() {
   const [checkBtn, setCheckBtn] = useState(false);
   const [msg, setMsg] = useState("");
-
+  const navigate = useNavigate();
   function handleChange(e) {
     let isChecked = e.target.checked;
     console.log(isChecked);

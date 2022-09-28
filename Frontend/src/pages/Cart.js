@@ -30,7 +30,6 @@ function Cart() {
         appctx.setOrderlist([]);
 
         navigate("/yourorders");
-        // window.location.href= "/yourorders";
       },
       (error) => {
         console.log(error);
@@ -61,11 +60,7 @@ function Cart() {
                 setOrderlist={setOrderlist}
               />
               <div className="text-center" style={{ margin: "50px" }}>
-                <button
-                  
-                  className="btn btn-primary"
-                  onClick={checkOut}
-                >
+                <button className="btn btn-primary" onClick={checkOut}>
                   Check Out
                 </button>
               </div>

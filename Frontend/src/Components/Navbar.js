@@ -9,7 +9,6 @@ import "../styles/Navbar.css";
 import Signin from "../pages/Signin";
 import PatientSignUp from "../pages/PatientSignUp";
 
-// for getting the current state of signin status
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/authSlice";
 
@@ -18,14 +17,11 @@ function Navbar() {
 
   var appctx = useContext(AppContext);
 
-  //
   const signinStatus = localStorage.getItem("id");
-  // const signinStatus = useSelector((state) => state.authSlice.status);
 
   const dispatch = useDispatch();
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
-  //----------------------------------------------------------------
 
   const [openLinks, setOpenLinks] = useState(false);
   const [show, setShow] = useState(false);
@@ -45,8 +41,6 @@ function Navbar() {
   const handleClick = () => {
     localStorage.clear();
     dispatch(logout());
-    // window.location.href = "/signin";
-    // navigate("/signin");
   };
   return (
     <nav

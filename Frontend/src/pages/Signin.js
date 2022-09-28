@@ -92,8 +92,8 @@ function Signin() {
         },
         (error) => {
           // alert("Invalid Login Details", error);
-          document.getElementById("error").innerHTML =
-            "&cross; Invalid Credentials";
+          // document.getElementById("error").innerHTML =
+          //   "&cross; Invalid Credentials";
           toast.error("Invalid Credentials");
           console.log(error);
           console.log("Error");

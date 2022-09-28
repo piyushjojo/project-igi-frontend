@@ -33,6 +33,8 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import AddMeds from "./pages/AddMeds";
 import IMedicineOrderList from "./pages/IMedicineOrderList";
+import FAQs from "./pages/FAQs";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -83,6 +85,8 @@ function App() {
               <Route exact path="orderhistory" element={<OrderHistory />} />
               <Route exact path="wallet" element={<WalletRecharge />} />
               <Route exact path="addMeds" element={<AddMeds />} />
+              <Route exact path="faq" element={<FAQs />} />
+              <Route exact path="contact" element={<ContactUs />} />
 
               <Route
                 exact
