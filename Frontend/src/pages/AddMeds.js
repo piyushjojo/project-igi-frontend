@@ -16,22 +16,19 @@ function AddMeds({ type = "text", label }) {
 
   const [msg, setMsg] = useState("");
 
-  // const { id } = useParams(); // ye kya krta h ni smjhra
   const addMedicine = (e) => {
-    e.preventDefault();
-
     const medicine = {
       name,
       price,
       quantity,
       manufacturer,
     };
-    //medicine add krne ki service ko kya bolte h?
+
     medinchargeService
       .addMed(medicine)
       .then((response) => {
         console.log("medicine added successfully", response.data);
-        
+
         toast.success("Medicine added Succesfully.");
         setMsg("Medicine added Successfully...");
       })
