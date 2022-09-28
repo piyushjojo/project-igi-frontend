@@ -12,21 +12,15 @@ import OrderMed from "./pages/OrderMed";
 import Cart from "./pages/Cart";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
-
 import AppContext from "./Components/context";
 import YourOrders from "./pages/YourOrders";
 import Payment from "./pages/Payment";
 import PaymentProcessing from "./pages/PaymentProcessing";
 import WalletRecharge from "./pages/WalletRecharge";
 import "react-toastify/dist/ReactToastify.css";
-
-// import About from "./pages/About";
-
 import OrderSummaryPage from "./pages/OrderSummaryPage";
-
 import Signin from "./pages/Signin";
 import About from "./pages/About";
-import SigninModal from "./pages/SigninModal";
 import DeleteAccount from "./pages/DeleteAccount";
 import OrderHistory from "./pages/OrderHistory";
 import Navbar from "./Components/Navbar";

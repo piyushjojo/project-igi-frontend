@@ -1,35 +1,12 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  Card,
-  CardText,
-  CardTitle,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Row,
-} from "reactstrap";
+import { Button, Form, FormGroup } from "reactstrap";
 import LoginImg from "../assets/login1.jpg";
-// import Navbar from "../Components/Navbar copy";
 import "../styles/Contact.css";
-import patientService from "../services/patientService";
-import medinchargeService from "../services/medinchargeService";
-// use the dispatch to update the redux store about the signin state
-import { useDispatch } from "react-redux";
-import { login } from "../slices/authSlice";
 import signInService from "../services/signInService";
-// import "../styles/Test.css";
 
 function Signin() {
-  const dispatch = useDispatch();
-
-  // get the navigate function reference
-  // const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("");
@@ -53,8 +30,6 @@ function Signin() {
 
     signInService.signin(login_payload).then(
       (response) => {
-        dispatch(login());
-
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("name", response.data.name);
