@@ -66,7 +66,7 @@ function Signin() {
           navigate("/meddashboard");
         }
 
-        toast.success("welcome to Site");
+        toast.success("Welcome to EPharma "+response.data.name);
       },
       (error) => {
         document.getElementById("error").innerHTML =

@@ -73,12 +73,7 @@ function MedicineInCartTableRow(props) {
       <td>{props.item.med.manufacturer}</td>
       <td>{props.item.med.price}</td>
       <td className="">
-        {/* <tr>
-						<div className="input-group-prepend"><td><button onClick={minusQty} className="input-group-text mt-2">-</button></td></div>
-						
-						<td><input type="number" min="1" id={props.item.med.id} name="quantity" defaultValue={props.item.quantity}  onInput={setter} className="form-control"/></td>
-						<td className="input-group-append"><button onClick={addQty} className="input-group-text mt-2">+</button></td>
-					</tr> */}
+        
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <button

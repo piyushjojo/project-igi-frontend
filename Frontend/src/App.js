@@ -35,6 +35,7 @@ import AddMeds from "./pages/AddMeds";
 import IMedicineOrderList from "./pages/IMedicineOrderList";
 import FAQs from "./pages/FAQs";
 import ContactUs from "./pages/ContactUs";
+import ViewOrder from "./pages/ViewOrder";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -87,12 +88,9 @@ function App() {
               <Route exact path="addMeds" element={<AddMeds />} />
               <Route exact path="faq" element={<FAQs />} />
               <Route exact path="contact" element={<ContactUs />} />
+              <Route exact path="medicineorderlist" element={<IMedicineOrderList />} />
+              <Route exact path="vieworder" element={<ViewOrder />} />
 
-              <Route
-                exact
-                path="medicineorderlist"
-                element={<IMedicineOrderList />}
-              />
             </Routes>
             <ToastContainer position="top-center" autoClose={2000} />
             <Footer />
