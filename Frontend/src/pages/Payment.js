@@ -60,7 +60,7 @@ function Payment() {
       setTimeout(() => {
         document.getElementById("wallet").className = "a ";
       }, 1000);
-      document.getElementById("walletBtn").hidden = false;
+      // document.getElementById("walletBtn").hidden = false;
     }
   };
 
@@ -86,9 +86,9 @@ function Payment() {
             className="btn btn-dark my-4"
             style={{ textAlign: "right" }}
             id="walletBtn"
-            hidden="true"
+            // hidden="true"
           >
-            Add to Wallet
+            Add Money Wallet
           </button>
         </Link>
       </div>
