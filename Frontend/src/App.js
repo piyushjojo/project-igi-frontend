@@ -29,6 +29,7 @@ import AddMeds from "./pages/AddMeds";
 import IMedicineOrderList from "./pages/IMedicineOrderList";
 import FAQs from "./pages/FAQs";
 import ContactUs from "./pages/ContactUs";
+import ViewOrder from "./pages/ViewOrder";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -102,6 +103,7 @@ function App() {
                   path="medicineorderlist"
                   element={<IMedicineOrderList />}
                 />
+                <Route exact path="vieworder" element={<ViewOrder />} />
               </Routes>
               <ToastContainer position="top-center" autoClose={2000} />
             </div>

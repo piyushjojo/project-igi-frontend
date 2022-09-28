@@ -24,12 +24,16 @@ const addMed = (data) => {
   return medInchargeClient.post(`/addMedicine`, data);
 };
 
-const fetchorders = () => {
-  return medInchargeClient.get(`/fetchorders`);
+const fetchorders = (pageno) => {
+  return medInchargeClient.get(`/fetchorders?pageno=${pageno}`);
 };
 
 const updateOrder = (id) => {
   return medInchargeClient.put(`/updateorder/${id}`);
 };
 
-export default { signout, signin, profile, changePassword, remove, addMed, fetchorders,updateOrder };
+const viewOrder = (id) => {
+  return medInchargeClient.get(`/vieworder/${id}`);
+};
+
+export default { signout, signin, profile, changePassword, remove, addMed, fetchorders,updateOrder,viewOrder };
