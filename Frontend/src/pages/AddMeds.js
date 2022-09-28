@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import medinchargeService from "../services/medinchargeService";
 import "../styles/TextInput.css";
 import { toast } from "react-toastify";
-
+import bg from "../assets/img.png";
 function AddMeds({ type = "text", label }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
@@ -39,8 +39,8 @@ function AddMeds({ type = "text", label }) {
   };
 
   return (
-    <div className="container" style={{ width: "50%" }}>
-      <form className="a" onSubmit={addMedicine}>
+    <div className="container">
+      <form className="a" style={{ width: "50%" }} onSubmit={addMedicine}>
         <div className="row">
           <div className="col">
             <div className="input-container">
@@ -88,8 +88,6 @@ function AddMeds({ type = "text", label }) {
               <span id="price_span" className="small"></span>
             </div>
           </div>
-        </div>
-        <div className="row">
           <div className="col">
             <div className="input-container">
               <input
@@ -111,6 +109,7 @@ function AddMeds({ type = "text", label }) {
             </div>
           </div>
         </div>
+
         <div className="row">
           <div className="col">
             <div className="input-container">
