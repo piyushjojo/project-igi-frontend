@@ -1,6 +1,3 @@
-/* .App {
-  text-align: center;
-} */
 
 .App-logo {
   height: 40vmin;
@@ -39,4 +36,9 @@
 
 .fullpage{
   height: 100%;
+}
+
+
+.main{
+min-height: calc(70vh);
 }

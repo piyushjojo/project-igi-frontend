@@ -131,8 +131,6 @@ function Payment() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

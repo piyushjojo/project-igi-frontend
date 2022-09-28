@@ -1,7 +1,7 @@
 const ContactUs = () => {
   return (
-    <div className="row">
-      <div class="bg-light p-5 rounded col-4">
+    <div className="row center mt-5">
+      <div class="bg-light p-5 rounded col-4 center">
         <h1>Contact Us</h1>
         <p class="lead">
           <p className="card-text">

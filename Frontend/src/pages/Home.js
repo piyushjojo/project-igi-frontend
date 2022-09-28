@@ -8,8 +8,8 @@ import Homepage from "./Homepage";
 function Home() {
   return (
     <div>
-      <Homepage />
       <Carousell />
+      <Homepage />
     </div>
   );
 }
