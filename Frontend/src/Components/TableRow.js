@@ -14,10 +14,12 @@ function TableRow(props) {
   useEffect(() => {
     appctx.orderlist.forEach((element) => {
       console.log(element.med.id + " in random function");
-      if (document.getElementById(element.med.id) != null)
+      if (document.getElementById(element.med.id) != null){
         document.getElementById(element.med.id).disabled = true;
-      document.getElementById(element.med.id).innerHTML = "&check; Added";
-      document.getElementById(element.med.id).className += " btn-success ";
+        document.getElementById(element.med.id).innerHTML = "&check; Added";
+        document.getElementById(element.med.id).className += " btn-success ";
+      }
+        
     });
   }, [appctx.orderlist]);
 
