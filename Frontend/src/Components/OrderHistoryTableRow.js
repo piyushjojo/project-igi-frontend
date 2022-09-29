@@ -19,9 +19,7 @@ function OrderHistoryTableRow(props) {
     medinchargeService.updateOrder(e.target.id).then(
       (response) => {
         console.log(response);
-        
-        window.location.href = "/medicineorderlist";
-        
+        navigate("/medicineorderlist");
       },
       (error) => {
         console.log(error);
@@ -34,8 +32,7 @@ function OrderHistoryTableRow(props) {
     medinchargeService.viewOrder(e.target.id).then(
       (response) => {
         console.log(response);
-        localStorage.setItem("vieworder",JSON.stringify(response.data));
-        // window.location.href = "/medicineorderlist";
+        localStorage.setItem("vieworder", JSON.stringify(response.data));
         navigate("/vieworder");
       },
       (error) => {
@@ -48,14 +45,52 @@ function OrderHistoryTableRow(props) {
   return (
     <tr>
       <td>{props.orderhistory.id}</td>
-      {/* <td>{props.orderhistory.patient.name}</td> */}
       <td>{props.orderhistory.order_date}</td>
       <td>{props.orderhistory.payment_status}</td>
       <td>{props.orderhistory.order_status}</td>
       <td>{props.orderhistory.amount}</td>
-      <td><button className="btn btn-primary" id={props.orderhistory.id} onClick={viewOrder} > View </button></td>
-      <td>{props.orderhistory.payment_status == "UNPAID" ? ( <button className="btn btn-primary" id={props.orderhistory.id} onClick={handleClick} > Pay </button> ) : ( "" )} </td>
-      <td className="text-success fw-bolder">{props.role == "med" ? ( props.orderhistory.order_status == "PROCESSING" ? ( <button className="btn btn-primary" id={props.orderhistory.id} onClick={manageOrders} > Dispatch </button> ) : ( "DISPATCHED" ) ) : ( "" )} </td>
+      <td>
+        <button
+          className="btn btn-primary"
+          id={props.orderhistory.id}
+          onClick={viewOrder}
+        >
+          {" "}
+          View{" "}
+        </button>
+      </td>
+      <td>
+        {props.orderhistory.payment_status == "UNPAID" ? (
+          <button
+            className="btn btn-primary"
+            id={props.orderhistory.id}
+            onClick={handleClick}
+          >
+            {" "}
+            Pay{" "}
+          </button>
+        ) : (
+          ""
+        )}{" "}
+      </td>
+      <td className="text-success fw-bolder">
+        {props.role == "med" ? (
+          props.orderhistory.order_status == "PROCESSING" ? (
+            <button
+              className="btn btn-primary"
+              id={props.orderhistory.id}
+              onClick={manageOrders}
+            >
+              {" "}
+              Dispatch{" "}
+            </button>
+          ) : (
+            "DISPATCHED"
+          )
+        ) : (
+          ""
+        )}{" "}
+      </td>
     </tr>
   );
 }

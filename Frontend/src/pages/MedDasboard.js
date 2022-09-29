@@ -3,14 +3,11 @@ import img1 from "../assets/addMedicine2.jpg";
 import img2 from "../assets/manageOrders.jpg";
 import { useNavigate } from "react-router-dom";
 
-// if (localStorage.getItem("id") == null) {
-//   window.location.href = "/signin";
-//   // navigate("/signin");
-// }
-
 function Dashboard(props) {
   const navigate = useNavigate();
-
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   const handleClick = (e, path) => {
     console.log("clicked div");
     // window.location.href = "/" + path;
@@ -23,16 +20,14 @@ function Dashboard(props) {
         <div className="row text-white">
           <div
             className="col"
-            onClick={(event) => handleClick(event, "addMeds")}
+            onClick={(event) => handleClick(event, "medicines")}
           >
             <div className="card ">
               <img src={img1} className="card-img" alt="..." />
               <div className="card-img-overlay bg-dark opacity-75">
-                <h1 className="card-title ">Add Medicine</h1>
-                <p className="card-text ">Click to add or update Medicine.</p>
-                <p className="card-text">
-                  {/* <small>Last updated 3 mins ago</small> */}
-                </p>
+                <h1 className="card-title ">Manage Inventory</h1>
+                <p className="card-text ">Click to view Inventory.</p>
+                <p className="card-text"></p>
               </div>
             </div>
           </div>
@@ -45,11 +40,9 @@ function Dashboard(props) {
               <div className="card-img-overlay  bg-dark opacity-75">
                 <h1 className="card-title ">Manage Orders</h1>
                 <p className="card-text ">
-                  Manage orders to keep your customers satisfied...
+                  Manage orders to keep your customers satisfied.
                 </p>
-                <p className="card-text">
-                  {/* <small>Last updated 3 mins ago</small> */}
-                </p>
+                <p className="card-text"></p>
               </div>
             </div>
           </div>

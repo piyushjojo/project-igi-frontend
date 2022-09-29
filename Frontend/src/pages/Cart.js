@@ -5,6 +5,9 @@ import patientService from "../services/patientService";
 import MedicinesInTheCart from "../Components/MedicinesInTheCart.js";
 import emptyCart from "../assets/emptycart.png";
 function Cart() {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   var appctx = useContext(AppContext);
   const [orderlist, setOrderlist] = useState([]);
   var navigate = useNavigate();

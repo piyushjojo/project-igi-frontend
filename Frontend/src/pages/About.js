@@ -53,7 +53,7 @@ function About() {
             <div className="mt-3">
               It's very helpful to buy medicine online. I ordered medicine. Got
               right time delivered and secured. Satiesfied customer service.
-              Thanks Netmeds! <br />
+              Thanks E-Pharma! <br />
             </div>
             <p className="text-end m-3 fw-bolder">- Venkatnarayanan</p>
           </div>

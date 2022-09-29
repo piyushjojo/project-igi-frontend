@@ -3,27 +3,19 @@ import { Link } from "react-router-dom";
 import OrderSummary from "../Components/OrderSummary";
 import { useState } from "react";
 import { useEffect } from "react";
-import Navbar2 from "../Components/Navbar copy";
 import "../styles/yourorder.css";
 import Footer from "../Components/Footer";
 
 function OrderSummaryPage(props) {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   const [color, setColor] = useState("orange");
   const [ordermsg, setOrdermsg] = useState("Order Process Initiated");
   var order_summary = JSON.parse(localStorage.getItem("order_summary"));
 
-  // useEffect(()=>{
-  //     if(order_summary.order.payment_status==="PAID"){
-  //         setColor("green");
-  //         setOrdermsg("Order Placed Successfully");
-  //         document.getElementById("paymentLink").hidden=true;
-  //     }
-  // },[])
-
   return (
     <div>
-      {/* <Navbar2 /> */}
-
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div

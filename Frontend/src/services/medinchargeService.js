@@ -24,6 +24,10 @@ const addMed = (data) => {
   return medInchargeClient.post(`/addMedicine`, data);
 };
 
+const updateMed = (data) => {
+  return medInchargeClient.put(`/addMedicine`, data);
+};
+
 const fetchorders = (pageno) => {
   return medInchargeClient.get(`/fetchorders?pageno=${pageno}`);
 };
@@ -36,4 +40,25 @@ const viewOrder = (id) => {
   return medInchargeClient.get(`/vieworder/${id}`);
 };
 
-export default { signout, signin, profile, changePassword, remove, addMed, fetchorders,updateOrder,viewOrder };
+const medicines = () => {
+  return medInchargeClient.get(`/medicines`);
+};
+
+const deleteMedicine = (id) => {
+  return medInchargeClient.delete(`/deleteMed/${id}`);
+};
+
+export default {
+  signout,
+  signin,
+  profile,
+  changePassword,
+  remove,
+  addMed,
+  fetchorders,
+  updateOrder,
+  viewOrder,
+  medicines,
+  deleteMedicine,
+  updateMed,
+};

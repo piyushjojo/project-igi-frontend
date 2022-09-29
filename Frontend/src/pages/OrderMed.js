@@ -15,12 +15,14 @@ import {
 } from "reactstrap";
 import patientService from "../services/patientService";
 import MedicineList from "../Components/MedicineList";
-import Navbar2 from "../Components/Navbar copy";
 import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import { useEffect } from "react";
 import search from "../assets/search.svg";
 
 function OrderMed(props) {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   const [name, setName] = useState("");
   const [medicine, setMedicine] = useState([]);
 

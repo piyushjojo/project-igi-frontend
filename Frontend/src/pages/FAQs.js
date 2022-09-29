@@ -1,8 +1,13 @@
+import question from "../assets/questionmark.webp";
+
 const FAQs = () => {
   return (
-    <div className="container col-8">
+    <div className="container-fluid col-12 row">
       <h1 className="text-center">How can we help you?</h1>
-      <div className="accordion" id="accordionExample">
+      <div className="col-4 mt-5">
+        <img src={question} className="" width="80%" alt="questionmark" />
+      </div>
+      <div className="accordion col-8" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
@@ -18,7 +23,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapseOne"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -47,7 +52,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapseTwo"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -76,7 +81,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapseThree"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -107,7 +112,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapse9"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -138,7 +143,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapse4"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -170,7 +175,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapse5"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
@@ -198,7 +203,7 @@ const FAQs = () => {
           </h2>
           <div
             id="collapse6"
-            className="accordion-collapse collapse show"
+            className="accordion-collapse collapse "
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >

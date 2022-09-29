@@ -1,8 +1,5 @@
-import { data, error } from "jquery";
 import { useState } from "react";
 import patientService from "../services/patientService";
-import { Link } from "react-router-dom";
-import Navbar2 from "../Components/Navbar copy";
 
 export default function WalletRecharge() {
   const [amt, setAmt] = useState(0.0);
@@ -10,13 +7,13 @@ export default function WalletRecharge() {
 
   function handleClick() {
     let id = localStorage.getItem("id");
-    
+
     console.log(amt);
     patientService
-      .recharge({amt}, id)
+      .recharge({ amt }, id)
       .then(
-        document.getElementById("msg").innerHTML =
-          "&check;amount added successfully."
+        (document.getElementById("msg").innerHTML =
+          "&check;amount added successfully.")
       )
       .catch((error) => {
         console.log("Something went wrong", error);
@@ -30,12 +27,10 @@ export default function WalletRecharge() {
 
   return (
     <div>
-      {/* <Navbar2 /> */}
       <div className="container" style={{ textAlign: "center", margin: 20 }}>
         <div className="row">
           <div className="col-3"></div>
           <div className="col-6" style={{ textAlign: "center", margin: 20 }}>
-            
             <h3>Add into wallet</h3>
             <div className="input-group mb-3 ">
               <input
@@ -46,26 +41,25 @@ export default function WalletRecharge() {
                 aria-describedby="button-addon2"
                 min={1}
                 value={amt}
-                onChange={(e) => {setAmt(e.target.value);
-                    if(e.target.value<0){
-                      setAmt(1)
-                    }
+                onChange={(e) => {
+                  setAmt(e.target.value);
+                  if (e.target.value < 0) {
+                    setAmt(1);
+                  }
                 }}
               />
               <button
                 className="btn btn-primary font-weight-bold"
-                
                 id="button-addon2"
                 onClick={handleClick}
               >
                 Add amount
               </button>
-              
             </div>
-            <i><span id="msg" className="text-success"></span></i>
+            <i>
+              <span id="msg" className="text-success"></span>
+            </i>
           </div>
-          
-          
         </div>
       </div>
     </div>

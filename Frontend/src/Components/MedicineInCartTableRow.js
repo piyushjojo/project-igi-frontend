@@ -3,25 +3,19 @@ import AppContext from "../Components/context";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
 function MedicineInCartTableRow(props) {
   var appctx = useContext(AppContext);
-  const[total,setTotal]=useState(props.item.quantity*props.item.med.price);
+  const [total, setTotal] = useState(
+    props.item.quantity * props.item.med.price
+  );
   var navigate = useNavigate();
-
-  // useEffect(()=>{
-  //   setTotal(props.item.med.price*props.item.quantity)
-  // },[])
-  // console.log("mictr")
-  // setTotal(props.item.med.price*props.item.quantity);
-
 
   var setter = (e) => {
     console.log("In setter");
     appctx.orderlist.filter(
       (item) => item.med.id == props.item.med.id
     )[0].quantity = parseInt(e.target.value);
-    console.log("in setter")
+    console.log("in setter");
     console.log(appctx.orderlist);
   };
 
@@ -47,7 +41,9 @@ function MedicineInCartTableRow(props) {
   var minusQty = (e) => {
     if (document.getElementById(props.item.med.id).value > 1) {
       document.getElementById(props.item.med.id).value--;
-      setTotal(props.item.med.price*document.getElementById(props.item.med.id).value);
+      setTotal(
+        props.item.med.price * document.getElementById(props.item.med.id).value
+      );
       document
         .getElementById(props.item.med.id)
         .dispatchEvent(new Event("input", { bubbles: true }));
@@ -59,7 +55,9 @@ function MedicineInCartTableRow(props) {
 
   var addQty = (e) => {
     document.getElementById(props.item.med.id).value++;
-    setTotal(props.item.med.price*document.getElementById(props.item.med.id).value);
+    setTotal(
+      props.item.med.price * document.getElementById(props.item.med.id).value
+    );
     document
       .getElementById(props.item.med.id)
       .dispatchEvent(new Event("input", { bubbles: true }));
@@ -73,7 +71,6 @@ function MedicineInCartTableRow(props) {
       <td>{props.item.med.manufacturer}</td>
       <td>{props.item.med.price}</td>
       <td className="">
-        
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <button

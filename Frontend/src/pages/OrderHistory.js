@@ -1,4 +1,3 @@
-import Navbar2 from "../Components/Navbar copy";
 import patientService from "../services/patientService";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -6,6 +5,9 @@ import OrderHistoryTable from "../Components/OrderHistoryTable";
 import { Link } from "react-router-dom";
 
 function OrderHistory() {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   const [orderhistory, setOrderhistory] = useState([]);
   var id = parseInt(localStorage.getItem("id"));
   useEffect(() => {

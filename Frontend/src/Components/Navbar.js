@@ -1,17 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// import Logo from "../../public/logo.jpeg"
-import Logo from "../assets/logo.jpeg";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import AppContext from "../Components/context";
 import "../styles/Navbar.css";
-import Signin from "../pages/Signin";
-import PatientSignUp from "../pages/PatientSignUp";
-
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../slices/authSlice";
-
+import logo from "../assets/logo.png";
 function Navbar() {
   const [cartqty, setCartqty] = useState(0);
 
@@ -19,7 +10,6 @@ function Navbar() {
 
   const signinStatus = localStorage.getItem("id");
 
-  const dispatch = useDispatch();
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
 
@@ -40,17 +30,14 @@ function Navbar() {
 
   const handleClick = () => {
     localStorage.clear();
-    dispatch(logout());
   };
   return (
     <nav
       style={{ backgroundColor: "#121619" }}
       className="navbar navbar-expand-lg navbar-dark"
     >
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          E-Pharma
-        </Link>
+      <div className="container-fluid ">
+        <img width={180} src={logo} alt="logo" />
 
         <button
           className="navbar-toggler"
@@ -67,90 +54,106 @@ function Navbar() {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <NavLink
+                className="nav-link "
+                activeClassName="active"
+                aria-current="page"
+                to="/"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/about">
+              <NavLink
+                className="nav-link "
+                activeClassName="active"
+                aria-current="page"
+                to="/about"
+              >
                 About
-              </Link>
+              </NavLink>
             </li>
 
             {signinStatus && role == "patient" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/dashboard"
                 >
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {signinStatus && role == "med" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/meddashboard"
                 >
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {signinStatus && role == "med" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/medicineorderlist"
                 >
                   Manage Orders
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {signinStatus && role == "med" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/addMeds"
                 >
                   Add Medicine
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {signinStatus && role == "patient" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/order"
                 >
                   Buy Medicine
-                </Link>
+                </NavLink>
               </li>
             )}
             {signinStatus && role == "patient" && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/orderhistory"
                 >
                   Orders
-                </Link>
+                </NavLink>
               </li>
             )}
 
             {signinStatus && role == "patient" && (
               <li className="nav-item">
-                <Link to="/cart" id="cart" className="nav-item nav-link">
+                <NavLink to="/cart" id="cart" className="nav-item nav-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"
@@ -167,7 +170,7 @@ function Navbar() {
                   >
                     {cartqty}
                   </sup>
-                </Link>
+                </NavLink>
               </li>
             )}
           </ul>
@@ -175,31 +178,29 @@ function Navbar() {
           <ul className="navbar-nav navbar-right">
             {!signinStatus && (
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
-                  // onClick={handleShow}
-
                   to="/signup"
                 >
                   Register
-                </Link>
+                </NavLink>
               </li>
             )}
 
             <li className="nav-item">
-              {/* if user is not signed then render signin link */}
               {!signinStatus && (
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  className="nav-link "
+                  activeClassName="active"
                   aria-current="page"
                   to="/signin"
                 >
                   Signin
-                </Link>
+                </NavLink>
               )}
 
-              {/* if user is signed in then render signout button */}
               {signinStatus && (
                 <li
                   className="nav-item dropdown  navbar-nav navbar-right"
@@ -230,59 +231,24 @@ function Navbar() {
                     className="dropdown-menu bg-dark"
                     aria-labelledby="navbarDropdown"
                   >
-                    {/* <li><a className="dropdown-item" href="#">Profile</a></li> */}
-                    {/* <li><a className="dropdown-item" href="#">ABCD</a></li> */}
-                    {/* <li><hr className="dropdown-divider"/></li> */}
-
                     {role == "patient" && (
-                      <Link className="dropdown-item" to="/profile">
+                      <NavLink className="dropdown-item" to="/profile">
                         Profile
-                      </Link>
+                      </NavLink>
                     )}
 
-                    {role == "med" && (
-                      <Link className="dropdown-item" to="/profile">
-                        Profile
-                      </Link>
-                    )}
-
-                    <Link
+                    <NavLink
                       onClick={handleClick}
                       className="dropdown-item"
                       to="/signin"
                     >
                       Sign Out
-                    </Link>
+                    </NavLink>
                   </ul>
                 </li>
               )}
             </li>
           </ul>
-
-          <Modal
-            show={show}
-            onHide={handleClose}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            {/* <Modal.Header>
-          <Modal.Header closeButton>
-          <Modal.Title>Register</Modal.Title>
-        </Modal.Header> */}
-            <Modal.Body>
-              <h1>Register</h1>
-              <PatientSignUp />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-            </Modal.Footer>
-          </Modal>
         </div>
       </div>
     </nav>
@@ -290,20 +256,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-/*
-<div className="leftSide" id={openLinks ? "open" : "close"}>
-        {/* <img src={Logo} /> */ //}
-{
-  /* <div className="hiddenLinks">
-          <Link to="/"> Home </Link>
-          <Link to="/about"> About </Link>
-          <Link to="/menu"> Services </Link>
-          <Link to="/patient/signin"> SignIn </Link>
-          <Link to="/register"> Register </Link>
-          <Link to="/custLogin">custLogin</Link>
-        </div> */
-}
-//</div>
-
-//*/

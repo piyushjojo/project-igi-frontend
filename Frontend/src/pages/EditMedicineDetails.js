@@ -1,20 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import medinchargeService from "../services/medinchargeService";
 import "../styles/TextInput.css";
 import { toast } from "react-toastify";
-function AddMeds() {
+
+function EditMedicineDetails(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
   const [quantity, setquantity] = useState();
   const [manufacturer, setmanufacturer] = useState("");
-  const [validquantity, setValidquantity] = useState(false);
-  const [validPrice, setValidPrice] = useState(false);
-  const [msg, setMsg] = useState("");
 
-  if (localStorage.getItem("id") == null) {
-    window.location.href = "/signin";
-  }
-  const addMedicine = (e) => {
+  const [msg, setMsg] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const { item } = location.state;
+    console.log(item);
+    setName(item.name);
+    setPrice(item.price);
+    setquantity(item.quantity);
+    setmanufacturer(item.manufacturer);
+  }, []);
+
+  const EditMedicineDetails = (e) => {
+    if (localStorage.getItem("id") == null) {
+      window.location.href = "/signin";
+    }
     e.preventDefault();
     const medicine = {
       name,
@@ -22,47 +35,36 @@ function AddMeds() {
       quantity,
       manufacturer,
     };
-
+    console.log(medicine);
     medinchargeService
       .addMed(medicine)
       .then((response) => {
-        console.log("medicine added successfully", response.data);
-
-        setTimeout(() => {
-          toast.success("Medicine added Succesfully.");
-          setMsg("Medicine added Successfully...");
-        }, 2000);
-      })
-      .then(() => {
-        setName("");
-        setPrice("");
-        setmanufacturer("");
-        setquantity("");
+        navigate("/medicines");
       })
       .catch((error) => {
         console.log("something went wroing", error);
       });
+    // }
   };
 
   return (
     <div className="container">
-      <form className="a" style={{ width: "50%" }} onSubmit={addMedicine}>
+      <form
+        className="a"
+        style={{ width: "50%" }}
+        onSubmit={EditMedicineDetails}
+      >
         <div className="row">
           <div className="col">
             <div className="input-container">
-              <h3 className="text-center">Add Medicine</h3>
+              <h3 className="text-center">Update Medicine</h3>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col">
             <div className="input-container">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+              <input type="text" value={name} disabled />
               <label className={name && "filled"} htmlFor="Name">
                 Name
               </label>
@@ -119,12 +121,7 @@ function AddMeds() {
         <div className="row">
           <div className="col">
             <div className="input-container">
-              <input
-                type="text"
-                value={manufacturer}
-                onChange={(e) => setmanufacturer(e.target.value)}
-                required
-              />
+              <input type="text" value={manufacturer} disabled />
               <label className={manufacturer && "filled"}>Manufacturer</label>
               <span id="manufacturer_span"></span>
             </div>
@@ -137,7 +134,7 @@ function AddMeds() {
             class="btn btn-dark"
             type="submit"
           >
-            Add Medicine
+            Update
           </button>
           <br></br>
           <span className="text-success">{msg}</span>
@@ -147,4 +144,4 @@ function AddMeds() {
   );
 }
 
-export default AddMeds;
+export default EditMedicineDetails;

@@ -1,9 +1,6 @@
 import { useState, useContext } from "react";
-import patientService from "../services/patientService";
 import AppContext from "./context";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
-// import AddToCart from "./AddToCart";
 function TableRow(props) {
   const [quantity, setQuantity] = useState(0);
   const [med, setMed] = useState();
@@ -19,16 +16,13 @@ function TableRow(props) {
       console.log(element.med.id + " in random function");
       if (document.getElementById(element.med.id) != null)
         document.getElementById(element.med.id).disabled = true;
-        document.getElementById(element.med.id).innerHTML = "&check; Added";
-        document.getElementById(element.med.id).className+=" btn-success "
+      document.getElementById(element.med.id).innerHTML = "&check; Added";
+      document.getElementById(element.med.id).className += " btn-success ";
     });
   }, [appctx.orderlist]);
 
   var addToCart = (e) => {
     e.preventDefault();
-    // e.target.disabled=true;
-    // console.log("In add to cart btn "+(e.target.id))
-    // document.getElementById(e.target.id).disabled=true;
     appctx.setOrderlist((orderlist) => {
       console.log();
       var a = orderlist;
@@ -44,7 +38,17 @@ function TableRow(props) {
       <td>{props.med.name}</td>
       <td>{props.med.manufacturer}</td>
       <td>{props.med.price}</td>
-      <td> <button className="btn btn-primary" onClick={addToCart} id={props.med.id} > Add To Cart </button> </td>
+      <td>
+        {" "}
+        <button
+          className="btn btn-primary"
+          onClick={addToCart}
+          id={props.med.id}
+        >
+          {" "}
+          Add To Cart{" "}
+        </button>{" "}
+      </td>
     </tr>
   );
 }

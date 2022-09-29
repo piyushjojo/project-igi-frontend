@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import TextInput from "../Components/TextInput";
 import { Link, useParams } from "react-router-dom";
 import patientService from "../services/patientService";
 import "../styles/TextInput.css";
 import { toast } from "react-toastify";
 
-function LoginTest({ type = "text", label }) {
+function Register({ type = "text", label }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone_no, setPhone_no] = useState("");
@@ -32,12 +31,10 @@ function LoginTest({ type = "text", label }) {
       dob,
       gender,
     };
-    //create
     patientService
       .signup(patient)
       .then((response) => {
         console.log("patient added successfully", response.data);
-        // window.location.href = "/patient/signin";
         toast.success("Patient Registered Succesfully.");
         setMsg("Patient Registered Successfully...");
         setTimeout(function () {
@@ -47,7 +44,6 @@ function LoginTest({ type = "text", label }) {
       .catch((error) => {
         console.log("something went wroing", error);
       });
-    // }
   };
 
   useEffect(() => {
@@ -83,57 +79,46 @@ function LoginTest({ type = "text", label }) {
           document.getElementById("email_span").innerHTML =
             "&check; Looks good";
           document.getElementById("email_span").style.color = "green";
-          // document.getElementById("submit-btn").disabled = false;
           setValidEmail(true);
           return true;
         })
         .catch((error) => {
           console.log("something went wroing", error);
-          // setemailAlreadyExist(true)
           document.getElementById("email_span").innerHTML =
             "&cross; email already in use";
           document.getElementById("email_span").style.color = "red";
-          // document.getElementById("submit-btn").disabled = true;
           setValidEmail(false);
 
           return false;
         });
-      // return (true)
     } else {
       console.log(
         "You have entered an invalid email address! " + e.target.value
       );
-      // return (false)
     }
   };
 
   const validatePhoneNo = (val) => {
     if (/[1-9]{1}[0-9]{9}$/.test(val)) {
-      // setPhone_no(val);
       document.getElementById("phone_span").innerHTML = "&check; ";
       document.getElementById("phone_span").style.color = "green";
-      // document.getElementById("submit-btn").disabled = false;
       setValidPhone(true);
     } else {
       document.getElementById("phone_span").innerHTML =
         "&cross; Enter valid Mobile No";
       document.getElementById("phone_span").style.color = "red";
-      // document.getElementById("submit-btn").disabled = true;
       setValidPhone(false);
     }
   };
 
   const validatePassword = (e) => {
-    //Password : contain at least 1 Capital Letter, 1 small Letter,1 Special Symbol,1 Number and contain minimum 8 to 15 charecters only
     if (
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,15}$/.test(
         e.target.value
       )
     ) {
-      // ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$
       console.log("valid password");
       setPassword(e.target.value);
-      // document.getElementById("submit-btn").disabled = false;
       document.getElementById("pass_span").innerHTML = "&check;";
       document.getElementById("pass_span").style.color = "green";
       setValidPassword(true);
@@ -143,13 +128,12 @@ function LoginTest({ type = "text", label }) {
         "&cross; 1 Capital 1 small ,1 Special ,1 Number, 8-15 chars";
       document.getElementById("pass_span").style.color = "red";
 
-      // document.getElementById("submit-btn").disabled = true;
       setValidPassword(false);
     }
   };
 
   return (
-    <div className="">
+    <div className="container-fluid col-6">
       <form className="a" onSubmit={savePatient}>
         <div className="row">
           <div className="col">
@@ -187,12 +171,9 @@ function LoginTest({ type = "text", label }) {
               <span id="pass_span" className="small"></span>
             </div>
           </div>
-
-          {/* <TextInput label="Email" type="email" /> */}
         </div>
         <div className="row">
           <div className="col">
-            {/* <TextInput label="Name" /> */}
             <div className="input-container">
               <input
                 type="text"
@@ -207,7 +188,6 @@ function LoginTest({ type = "text", label }) {
             </div>
           </div>
           <div className="col">
-            {/* <TextInput label="Phone No." type="number" /> */}
             <div className="input-container">
               <input
                 type="number"
@@ -222,11 +202,9 @@ function LoginTest({ type = "text", label }) {
             </div>
           </div>
         </div>
-        {/* Line 2 */}
 
         <div className="row">
           <div className="col">
-            {/* <TextInput label="Date Of Birth" type="date" /> */}
             <div className="input-container">
               <input
                 type="date"
@@ -240,7 +218,6 @@ function LoginTest({ type = "text", label }) {
             </div>
           </div>
           <div className="col">
-            {/* <TextInput label="" /> */}
             <div className="input-container">
               <select onChange={(e) => setGender(e.target.value)}>
                 <option value=""></option>
@@ -253,7 +230,6 @@ function LoginTest({ type = "text", label }) {
           </div>
         </div>
         <div className="row">
-          {/* <TextInput label="Address" /> */}
           <div className="input-container">
             <input
               type="text"
@@ -282,4 +258,4 @@ function LoginTest({ type = "text", label }) {
   );
 }
 
-export default LoginTest;
+export default Register;

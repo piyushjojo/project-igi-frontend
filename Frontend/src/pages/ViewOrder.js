@@ -3,33 +3,33 @@ import { useNavigate } from "react-router-dom";
 import medinchargeService from "../services/medinchargeService";
 import { toast } from "react-toastify";
 
-function ViewOrder(){
-    var orderlist = JSON.parse(localStorage.getItem("vieworder"));
-    console.log(orderlist)
-    var role=localStorage.getItem("role");
-
+function ViewOrder() {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
+  var orderlist = JSON.parse(localStorage.getItem("vieworder"));
+  console.log(orderlist);
+  var role = localStorage.getItem("role");
 
   var navigate = useNavigate();
 
-    const manageOrders = (e) => {
-        medinchargeService.updateOrder(e.target.id).then(
-          (response) => {
-            console.log(response);
-            toast.success("Order Dispatched")
-            setTimeout(()=>{
-                navigate("/medicineorderlist");
-            },2000)
-            
-          },
-          (error) => {
-            console.log(error);
-            console.log("Error");
-          }
-        );
-      };
+  const manageOrders = (e) => {
+    medinchargeService.updateOrder(e.target.id).then(
+      (response) => {
+        console.log(response);
+        toast.success("Order Dispatched");
+        setTimeout(() => {
+          navigate("/medicineorderlist");
+        }, 2000);
+      },
+      (error) => {
+        console.log(error);
+        console.log("Error");
+      }
+    );
+  };
 
-    return(
-        
+  return (
     <div>
       <div className="container-fluid">
         <div className="row justify-content-center">
@@ -66,14 +66,29 @@ function ViewOrder(){
               </table>
               <hr></hr>
               <div className="text-center text-success fw-bolder">
-              {role == "med" ? ( orderlist[0].order.order_status == "PROCESSING" ? ( <button className="btn btn-primary" id={orderlist[0].order.id} onClick={manageOrders} style={{width:"100%"}}> Dispatch </button> ) : ( "DISPATCHED" ) ) : ( "" )} 
+                {role == "med" ? (
+                  orderlist[0].order.order_status == "PROCESSING" ? (
+                    <button
+                      className="btn btn-primary"
+                      id={orderlist[0].order.id}
+                      onClick={manageOrders}
+                      style={{ width: "100%" }}
+                    >
+                      {" "}
+                      Dispatch{" "}
+                    </button>
+                  ) : (
+                    "DISPATCHED"
+                  )
+                ) : (
+                  ""
+                )}
               </div>
-              
             </div>
           </div>
         </div>
       </div>
     </div>
-    )
+  );
 }
 export default ViewOrder;

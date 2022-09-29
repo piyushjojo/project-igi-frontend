@@ -1,6 +1,5 @@
 import patientService from "../services/patientService";
 import { useNavigate, Link } from "react-router-dom";
-import Navbar2 from "../Components/Navbar copy";
 import { useState, useContext } from "react";
 import "../styles/Payment.css";
 import AppContext from "../Components/context";
@@ -9,6 +8,9 @@ import Wallet from "../Components/Wallet";
 import Footer from "../Components/Footer";
 
 function Payment() {
+  if (localStorage.getItem("id") == null) {
+    window.location.href = "/signin";
+  }
   const [color, setColor] = useState("black");
   var order_summary = JSON.parse(localStorage.getItem("order_summary"));
   var ohtr = JSON.parse(localStorage.getItem("ohtr"));

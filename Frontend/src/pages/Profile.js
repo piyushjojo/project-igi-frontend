@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import patientService from "../services/patientService";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar2 from "../Components/Navbar copy";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import DeleteAccount from "./DeleteAccount.js";
@@ -9,10 +8,9 @@ import medinchargeService from "../services/medinchargeService";
 
 function Profile() {
   var role = localStorage.getItem("role");
-
+  var navigate = useNavigate();
   if (localStorage.getItem("id") == null) {
-    window.location.href = "/signin";
-    // navigate("/signin");
+    navigate("/signin");
   }
   const [user, setUser] = useState("");
   var id = parseInt(localStorage.getItem("id"));
@@ -51,7 +49,6 @@ function Profile() {
 
   return (
     <div>
-      {/* <h1>Welcome {user.name}</h1> */}
       <div className="container-fluid col-6 my-5">
         <h1>Profile</h1>
         <table className="table table-bordered table-striped">

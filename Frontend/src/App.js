@@ -3,11 +3,8 @@ import { Route, Routes, Link, BrowserRouter, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dasboard";
 import MedDashboard from "./pages/MedDasboard";
-import MedInchargeLogin from "./pages/MedInchargeLogin";
-import LabInchargeLogin from "./pages/LabInchargeLogin";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
-import PatientSignUp from "./pages/PatientSignUp";
 import OrderMed from "./pages/OrderMed";
 import Cart from "./pages/Cart";
 import { useState } from "react";
@@ -30,6 +27,10 @@ import IMedicineOrderList from "./pages/IMedicineOrderList";
 import FAQs from "./pages/FAQs";
 import ContactUs from "./pages/ContactUs";
 import ViewOrder from "./pages/ViewOrder";
+import Register from "./pages/Register";
+import Medicines from "./pages/Medicines";
+import NotFound from "./pages/NotFound";
+import EditMedicineDetails from "./pages/EditMedicineDetails";
 
 function App() {
   const [orderlist, setOrderlist] = useState([]);
@@ -54,21 +55,11 @@ function App() {
             <div className="main">
               <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route
-                  exact
-                  path="labincharge/signin"
-                  element={<LabInchargeLogin />}
-                />
-                <Route
-                  exact
-                  path="medincharge/signin"
-                  element={<MedInchargeLogin />}
-                />
+
                 <Route exact path="dashboard" element={<Dashboard />} />
                 <Route exact path="meddashboard" element={<MedDashboard />} />
                 <Route exact path="about" element={<About />} />
                 <Route exact path="services" element={<About />} />
-                {/* <Route exact path="signin" element={<Signin />} /> */}
                 <Route exact path="signin" element={<Signin />} />
                 <Route exact path="profile" element={<Profile />} />
                 <Route
@@ -76,7 +67,7 @@ function App() {
                   path="changePassword"
                   element={<ChangePassword />}
                 />
-                <Route exact path="signup" element={<PatientSignUp />} />
+                <Route exact path="signup" element={<Register />} />
                 <Route exact path="order" element={<OrderMed />} />
                 <Route exact path="cart" element={<Cart />} />
                 <Route exact path="yourorders" element={<YourOrders />} />
@@ -97,13 +88,19 @@ function App() {
                 <Route exact path="addMeds" element={<AddMeds />} />
                 <Route exact path="faq" element={<FAQs />} />
                 <Route exact path="contact" element={<ContactUs />} />
-
+                <Route exact path="medicines" element={<Medicines />} />
+                <Route
+                  exact
+                  path="editMedicine"
+                  element={<EditMedicineDetails />}
+                />
                 <Route
                   exact
                   path="medicineorderlist"
                   element={<IMedicineOrderList />}
                 />
                 <Route exact path="vieworder" element={<ViewOrder />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <ToastContainer position="top-center" autoClose={2000} />
             </div>

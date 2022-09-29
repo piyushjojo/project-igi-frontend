@@ -11,8 +11,8 @@ const handleClick = (e, path) => {
 function Dashboard(props) {
   const navigate = useNavigate();
   if (localStorage.getItem("id") == null) {
-    // window.location.href = "/signin";
-    navigate("/signin");
+    window.location.href = "/signin";
+    // navigate("/signin");
   }
 
   return (
