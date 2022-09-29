@@ -2,7 +2,7 @@ import { useState } from "react";
 import patientService from "../services/patientService";
 
 export default function WalletRecharge() {
-  const [amt, setAmt] = useState(0.0);
+  const [amt, setAmt] = useState();
   const [checkBtn, setCheckBtn] = useState("");
 
   function handleClick() {

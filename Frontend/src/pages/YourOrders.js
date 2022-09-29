@@ -22,10 +22,11 @@ function YourOrders(props) {
             <div className="card-body">
               <h5 className="card-title">Order Details</h5>
               <hr></hr>
-              <h6>Address</h6>
+              <h6>Name</h6>
               <p className="card-text" style={{ marginBottom: 0 }}>
                 {order_summary.order.patient.name}
               </p>
+              <h6>Address</h6>
               <p className="card-text">{order_summary.order.patient.address}</p>
               <h6>Order Date</h6>
               <p className="card-text">{order_summary.order.order_date}</p>

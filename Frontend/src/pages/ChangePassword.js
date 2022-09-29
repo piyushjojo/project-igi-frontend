@@ -22,19 +22,20 @@ function ChangePassword() {
   const navigate = useNavigate();
 
   const validateNewPassword = (e) => {
-    if (
-      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,15}$/.test(
-        e.target.value
-      )
-    ) {
-      console.log("valid password");
-      setNewPassword(e.target.value);
-    } else {
-      console.log("Invalid Passowrd");
-      document.getElementById("msg").innerHTML =
-        "&cross; 1 Capital 1 small ,1 Special ,\n1 Number Length 8-15 chars";
-      document.getElementById("msg").style.color = "red";
-    }
+    setNewPassword(e.target.value);
+    // if (
+    //   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,15}$/.test(
+    //     e.target.value
+    //   )
+    // ) {
+    //   console.log("valid password");
+    //   setNewPassword(e.target.value);
+    // } else {
+    //   console.log("Invalid Passowrd");
+    //   document.getElementById("msg").innerHTML =
+    //     "&cross; 1 Capital 1 small ,1 Special ,\n1 Number Length 8-15 chars";
+    //   document.getElementById("msg").style.color = "red";
+    // }
   };
 
   useEffect(() => {
@@ -119,7 +120,7 @@ function ChangePassword() {
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Confirm new password"
-                type="text"
+                type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />

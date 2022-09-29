@@ -41,7 +41,7 @@ function Signin() {
           navigate("/meddashboard");
         }
 
-        toast.success("Welcome to EPharma "+response.data.name);
+        toast.success("Welcome to EPharma " + response.data.name);
       },
       (error) => {
         document.getElementById("error").innerHTML =
@@ -108,7 +108,7 @@ function Signin() {
                   <select onChange={(e) => prof(e.target.value)}>
                     <option value=""></option>
                     <option value="PATIENT">Customer</option>
-                    <option value="MED">Manager</option>
+                    <option value="MED">Incharge</option>
                   </select>
                   <label className={user && "filled"} htmlFor="role">
                     Login as

@@ -19,7 +19,8 @@ function OrderHistoryTableRow(props) {
     medinchargeService.updateOrder(e.target.id).then(
       (response) => {
         console.log(response);
-        navigate("/medicineorderlist");
+        window.location.href = "/medicineorderlist";
+        // navigate("/medicineorderlist");
       },
       (error) => {
         console.log(error);
